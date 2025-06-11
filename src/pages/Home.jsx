@@ -128,21 +128,20 @@ const Home = () => {
 
               {/* News Card 2 */}
               <a
-                href="https://startuppedia.in/trending/trending/ajay-devgn-launches-ai-driven-media-company-prismix-to-revolutionise-storytelling-8833329"
+                href="https://yourstory.com/ai-story/exclusive-ajay-devgn-prismix-studios-partners-get-set-learn-ai-education-content-schools"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-black/50 backdrop-blur-lg shadow-lg rounded-lg overflow-hidden p-4 block flex flex-col h-full"
               >
                 <div className="w-full h-48 overflow-hidden rounded-md">
                   <img
-                    src="/news2.png"
+                    src="/news2_1.png"
                     alt="News 2"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <h3 className="text-xl text-white font-[arial] md:text-2xl mt-4 text-center">
-                  Ajay Devgn Launches AI-Driven Media Company ‘Prismix’ To
-                  Revolutionise Storytelling
+                  Ajay Devgn’s Prismix Studios partners with Get Set Learn to create AI content for students
                 </h3>
               </a>
 
