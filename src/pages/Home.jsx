@@ -204,6 +204,21 @@ const Home = () => {
             alt="Client 6"
             className="h-20 w-40 object-contain"
           />
+          <img
+            src="/3Pine.png"
+            alt="Client 7"
+            className="h-20 w-40 object-contain"
+          />
+          <img
+            src="/starcruise2.png"
+            alt="Client 8"
+            className="h-20 w-40 object-contain"
+          />
+          <img
+            src="/indivar.jpg"
+            alt="Client 9"
+            className="h-20 w-40 object-contain"
+          />
         </div>
       </section>
     </div>
