@@ -219,6 +219,11 @@ const Home = () => {
             alt="Client 9"
             className="h-20 w-40 object-contain"
           />
+          <img
+            src="/LuvFilms.jpg"
+            alt="Client 10"
+            className="h-20 w-40 object-contain"
+          />
         </div>
       </section>
     </div>
