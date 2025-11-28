@@ -109,7 +109,7 @@ const Home = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 justify-center items-start">
               {/* News Card 1 */}
               <a
-                href="https://m.economictimes.com/industry/media/entertainment/media/ajay-devgn-launches-ai-driven-media-company-prismix/articleshow/118796858.cms"
+                href="https://solveit.getsetlearn.online/#/bootcamp/videogenx"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-black/50 backdrop-blur-lg shadow-lg rounded-lg overflow-hidden p-4 block flex flex-col h-full"
@@ -122,7 +122,7 @@ const Home = () => {
                   />
                 </div>
                 <h3 className="text-xl text-white font-[arial] md:text-2xl mt-4 text-center">
-                  Ajay Devgn launches AI-driven media company Prismix
+                  VideoGenX - AI Film Making Bootcamp
                 </h3>
               </a>
 
