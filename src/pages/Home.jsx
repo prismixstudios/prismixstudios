@@ -109,7 +109,7 @@ const Home = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 justify-center items-start">
               {/* News Card 1 */}
               <a
-                href="https://solveit.getsetlearn.online/#/bootcamp/videogenx"
+                href="https://prismixstudios.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-black/50 backdrop-blur-lg shadow-lg rounded-lg overflow-hidden p-4 block flex flex-col h-full"
