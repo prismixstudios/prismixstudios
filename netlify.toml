@@ -1,0 +1,24 @@
+# ── Build ─────────────────────────────────────────────────────────
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# ── Functions ─────────────────────────────────────────────────────
+[functions]
+  directory    = "netlify/functions"
+  node_bundler = "esbuild"
+
+# ── Redirects ─────────────────────────────────────────────────────
+# IMPORTANT: /api/blogs must appear BEFORE the SPA catch-all,
+# otherwise /* swallows it and the function is never invoked.
+
+[[redirects]]
+  from   = "/api/blogs"
+  to     = "/.netlify/functions/blogs"
+  status = 200
+  force  = true
+
+[[redirects]]
+  from   = "/*"
+  to     = "/index.html"
+  status = 200

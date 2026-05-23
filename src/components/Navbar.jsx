@@ -25,6 +25,7 @@ const Navbar = () => {
     { to: "/", text: "Home" },
     { to: "/about", text: "About Us" },
     { to: "/whatwedo", text: "What We Do" },
+    { to: "/blogs", text: "Blogs" },
     { to: "/contact", text: "Contact" },
   ];
 

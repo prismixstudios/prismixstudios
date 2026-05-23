@@ -1,0 +1,33 @@
+# ─────────────────────────────────────────────────────────────────
+#  REFERENCE CONFIG — where this file goes depends on your repo layout.
+#  See README.md → "Deployment" for the two options.
+# ─────────────────────────────────────────────────────────────────
+
+# ── Build ─────────────────────────────────────────────────────────
+[build]
+  # Tell Netlify where the React app lives.
+  # Option A (repo root = website-changes/): keep as-is.
+  # Option B (repo root = prismix-website/): remove the `base` line
+  #          and change the functions path to "netlify/functions".
+  base    = "prismix-website"
+  command = "npm run build"
+  publish = "dist"
+
+# ── Functions ─────────────────────────────────────────────────────
+[functions]
+  # Path is relative to the repository root (not the base dir).
+  directory    = "LinkedIn-postFetcher/netlify/functions"
+  node_bundler = "esbuild"
+
+# ── React SPA fallback ────────────────────────────────────────────
+[[redirects]]
+  from   = "/*"
+  to     = "/index.html"
+  status = 200
+
+# ── Clean /api/blogs URL ──────────────────────────────────────────
+[[redirects]]
+  from   = "/api/blogs"
+  to     = "/.netlify/functions/blogs"
+  status = 200
+  force  = true
