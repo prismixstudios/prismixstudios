@@ -145,6 +145,8 @@ netlify/
     sync-linkedin-blogs.js    ← Scheduled LinkedIn importer (runs @hourly)
     lib/
       postStore.js            ← Shared read / merge / write helpers
+  .local/
+    blogs-posts.json          ← Local dev post store (gitignored, auto-created)
 
 src/
   pages/Blogs.jsx             ← Blog page (reads from blogService)
@@ -176,13 +178,45 @@ netlify functions:invoke sync-linkedin-blogs
 
 ```bash
 npm install
-npm run dev     # http://localhost:5173
+npm run serve   # http://localhost:8888  (Netlify dev proxy + functions)
+npm run dev     # http://localhost:5173  (Vite only, no functions)
 ```
 
-In development (`import.meta.env.PROD === false`), `blogService.js` returns
-the mock posts from `src/data/blogs.js` — the Netlify Functions are not called.
+`npm run serve` starts the full local stack (no Netlify CLI required):
+- Vite on `:5173` — open **http://localhost:5173** in your browser
+- Tiny Node.js functions server on `:9999` (started by `scripts/dev-functions.mjs`)
+- Vite proxies `/api/*` → `:9999` so the frontend hits the real function code
 
-To test functions locally, use `netlify dev` (requires the Netlify CLI).
+`postStore.js` detects `NETLIFY_DEV=true` and stores posts in a local flat
+file instead of Netlify Blobs:
+
+```
+netlify/.local/blogs-posts.json   ← gitignored, created automatically on first POST
+```
+
+No Netlify login, no site linking, no CLI required.
+
+#### Testing the blog API locally
+
+```bash
+# GET all posts
+curl http://localhost:5173/api/blogs
+
+# POST a new post
+curl -X POST http://localhost:5173/api/blogs \
+  -H "Authorization: Bearer dev-secret" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "title": "Test post",
+    "body": ["First paragraph.", "Second paragraph."]
+  }'
+```
+
+The bearer token is the value of `BLOG_INGEST_TOKEN` in your `.env` file
+(default: `dev-secret`).
+
+`npm run dev` (Vite only, no functions) returns mock posts from
+`src/data/blogs.js` — no function server needed for UI work.
 
 ---
 

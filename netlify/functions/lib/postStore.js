@@ -5,6 +5,9 @@
  *   store : "blogs"
  *   key   : "posts.json"
  *
+ * In local development (NETLIFY_DEV=true), posts are stored in a flat JSON
+ * file at netlify/.local/blogs-posts.json so Netlify Blobs is not required.
+ *
  * This module is imported by:
  *   - blogs.js              (GET + POST handler)
  *   - sync-linkedin-blogs.js (scheduled LinkedIn import)
@@ -16,6 +19,18 @@
  */
 
 import { getStore } from "@netlify/blobs";
+import { readFileSync, writeFileSync, mkdirSync, existsSync } from "fs";
+import { fileURLToPath } from "url";
+import { dirname, join } from "path";
+
+// ─── Environment detection ────────────────────────────────────────────────────
+
+const IS_LOCAL = process.env.NETLIFY_DEV === "true" || process.env.CONTEXT === "dev";
+
+// Resolve paths relative to this file so they work regardless of cwd.
+// postStore.js lives at netlify/functions/lib/, so ../../.local/ → netlify/.local/
+const LOCAL_DIR  = join(dirname(fileURLToPath(import.meta.url)), "../../.local");
+const LOCAL_FILE = join(LOCAL_DIR, "blogs-posts.json");
 
 // Netlify Blobs store name and key used by every function in this project
 const STORE_NAME = "blogs";
@@ -24,23 +39,41 @@ const POSTS_KEY  = "posts.json";
 // ─── Storage helpers ──────────────────────────────────────────────────────────
 
 /**
- * Reads all posts from Blobs and returns them as an array.
+ * Reads all posts and returns them as an array.
  * Returns [] if nothing has been saved yet.
  *
- * Uses consistency: "strong" so every read reflects the latest write,
- * even on multi-region Netlify deploys.
+ * Local dev : reads netlify/.local/blogs-posts.json
+ * Production: reads from Netlify Blobs with strong consistency
  */
 export async function readPosts() {
+  if (IS_LOCAL) {
+    if (!existsSync(LOCAL_FILE)) return [];
+    try {
+      return JSON.parse(readFileSync(LOCAL_FILE, "utf8"));
+    } catch {
+      return [];
+    }
+  }
+
   const store = getStore({ name: STORE_NAME, consistency: "strong" });
   const posts  = await store.get(POSTS_KEY, { type: "json" });
   return Array.isArray(posts) ? posts : [];
 }
 
 /**
- * Writes the given array of posts to Blobs, replacing the previous value.
+ * Writes the given array of posts, replacing the previous value.
  * The caller is responsible for sorting before calling this function.
+ *
+ * Local dev : writes pretty JSON to netlify/.local/blogs-posts.json
+ * Production: writes to Netlify Blobs
  */
 export async function writePosts(posts) {
+  if (IS_LOCAL) {
+    if (!existsSync(LOCAL_DIR)) mkdirSync(LOCAL_DIR, { recursive: true });
+    writeFileSync(LOCAL_FILE, JSON.stringify(posts, null, 2), "utf8");
+    return;
+  }
+
   const store = getStore({ name: STORE_NAME, consistency: "strong" });
   await store.setJSON(POSTS_KEY, posts);
 }
