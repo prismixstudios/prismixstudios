@@ -69,7 +69,13 @@ export async function getBlogPosts() {
     if (res.ok) {
       const data = await res.json();
       if (Array.isArray(data) && data.length > 0) {
-        const sorted = data.sort(
+        // Strip drafts and dry-run posts — they exist in posts.json but must
+        // not appear on the public Blogs page.
+        // A post is visible only when published !== false AND dryRun !== true.
+        const visible = data.filter(
+          (p) => p.published !== false && p.dryRun !== true
+        );
+        const sorted = visible.sort(
           (a, b) => new Date(b.publishedAt) - new Date(a.publishedAt)
         );
         _cache   = sorted;

@@ -196,6 +196,12 @@ function mergePost(existing, incoming) {
     readMinutes: incoming.readMinutes ?? existing.readMinutes ?? 1,
     category:    pickRicher(incoming.category,  existing.category,  agentWins),
     pullQuote:   pickRicher(incoming.pullQuote, existing.pullQuote, agentWins),
+
+    // Draft flags — incoming value wins; ?? is safe here because false/true are
+    // not nullish, so an explicit false or true from the agent is always respected.
+    // Defaults: published=true (visible), dryRun=false (not a test run).
+    published:   incoming.published ?? existing.published ?? true,
+    dryRun:      incoming.dryRun    ?? existing.dryRun    ?? false,
   };
 }
 

@@ -260,7 +260,7 @@ body {
   color: var(--bp-ink-0); font-size: 20px; line-height: 1.85; font-weight: 400;
 }
 .bp-solo .bp-solo-body p { margin: 0; }
-.bp-solo .bp-solo-body > * + * { margin-top: 40px; }
+.bp-solo .bp-solo-body p + p { margin-top: 40px; }
 .bp-solo .bp-solo-body p:first-child::first-letter {
   font-size: 64px; float: left; line-height: 0.9; margin: 6px 8px 0 0; font-weight: 300;
   background: var(--bp-grad); -webkit-background-clip: text; background-clip: text; color: transparent;
@@ -326,7 +326,8 @@ body {
   margin-top: 14px;
 }
 .bp-expanded-full-body { color: var(--bp-ink-0); font-size: 20px; line-height: 1.8; font-weight: 400; margin-top: 10px; }
-.bp-expanded-full-body > * + * { margin-top: 40px; }
+.bp-expanded-full-body p { margin: 0; }
+.bp-expanded-full-body p + p { margin-top: 40px; }
 .bp-close-btn {
   position: absolute; right: 18px; top: 18px; z-index: 5;
   width: 38px; height: 38px; border-radius: 999px;
@@ -375,7 +376,7 @@ body {
 }
 .bp-te-body { color: var(--bp-ink-0); font-size: 20px; line-height: 1.85; font-weight: 400; max-width: 72ch; }
 .bp-te-body p { margin: 0; }
-.bp-te-body > * + * { margin-top: 40px; }
+.bp-te-body p + p { margin-top: 40px; }
 .bp-te-body p:first-child::first-letter {
   font-size: 52px; float: left; line-height: 0.9; margin: 6px 10px 0 0; font-weight: 300;
   background: var(--bp-grad); -webkit-background-clip: text; background-clip: text; color: transparent;

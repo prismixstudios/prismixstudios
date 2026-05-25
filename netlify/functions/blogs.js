@@ -25,8 +25,15 @@
  *     "author":      { "name": "...", "role": "...", "initials": "..." },
  *     "category":    "optional — defaults to Prismix Journal",
  *     "tags":        ["optional"],
- *     "pullQuote":   "optional"
+ *     "pullQuote":   "optional",
+ *     "published":   "optional boolean — defaults to true. false = draft, hidden from frontend",
+ *     "dryRun":      "optional boolean — defaults to false. true = saved to posts.json but hidden from frontend"
  *   }
+ *
+ * Draft / dry-run behaviour:
+ *   A post is hidden from the frontend when published === false OR dryRun === true.
+ *   The post is still written to data/posts.json in full so it can be inspected
+ *   or promoted later by re-POSTing with published: true and dryRun: false.
  *
  * See README.md for a full curl example.
  */
@@ -143,6 +150,18 @@ function validatePostBody(body) {
       if (typeof body.tags[j] !== "string") return '"tags[' + j + ']" must be a string';
       if (body.tags[j].length > 100)        return '"tags" items must be 100 characters or fewer each';
     }
+  }
+
+  // published — optional boolean (default true)
+  // false means the post is saved to posts.json but filtered out by the frontend
+  if (body.published != null) {
+    if (typeof body.published !== "boolean") return '"published" must be a boolean';
+  }
+
+  // dryRun — optional boolean (default false)
+  // true means the post is saved to posts.json but filtered out by the frontend
+  if (body.dryRun != null) {
+    if (typeof body.dryRun !== "boolean") return '"dryRun" must be a boolean';
   }
 
   return null;
@@ -346,6 +365,10 @@ function normalizeAgentPost(raw) {
     category:    raw.category    ?? "Prismix Journal",
     pullQuote:   pullQuote,
     tags:        Array.isArray(raw.tags) ? raw.tags : [],
+    // published: false hides the post from the frontend without deleting it
+    published:   raw.published !== false,   // defaults to true unless explicitly false
+    // dryRun: true also hides the post from the frontend (useful for agent testing)
+    dryRun:      raw.dryRun === true,       // defaults to false unless explicitly true
   };
 }
 
