@@ -1,21 +1,24 @@
 /**
- * postStore.js — Shared blog storage helpers
+ * postStore.js — Netlify Blobs storage helpers
  *
- * All blog posts live in Netlify Blobs under:
- *   store : "blogs"
- *   key   : "posts.json"
+ * ┌─────────────────────────────────────────────────────────────────────────┐
+ * │  LEGACY — GitHub-backed posts.json trial active since 2026-05-25        │
+ * │                                                                         │
+ * │  readPosts() and writePosts() (Netlify Blobs) are NOT used during the   │
+ * │  trial.  The active write path is githubPostStore.js.                   │
+ * │                                                                         │
+ * │  mergePosts() and mergeAllPosts() are storage-agnostic and remain       │
+ * │  ACTIVE — blogs.js still imports them for deduplication logic.          │
+ * │                                                                         │
+ * │  To revert to Netlify Blobs: re-enable the readPosts / writePosts       │
+ * │  imports in blogs.js and sync-linkedin-blogs.js, and disable the        │
+ * │  githubPostStore imports.                                                │
+ * └─────────────────────────────────────────────────────────────────────────┘
  *
- * In local development (NETLIFY_DEV=true), posts are stored in a flat JSON
- * file at netlify/.local/blogs-posts.json so Netlify Blobs is not required.
- *
- * This module is imported by:
- *   - blogs.js              (GET + POST handler)
- *   - sync-linkedin-blogs.js (scheduled LinkedIn import)
- *
- * Keeping the read / merge / write logic in one place means both
- * code paths follow identical deduplification rules, so a post
- * created by the agent and later imported from LinkedIn will always
- * collapse into the same record.
+ * Original behaviour (preserved for easy revert):
+ *   All blog posts live in Netlify Blobs under store "blogs", key "posts.json".
+ *   In local development (NETLIFY_DEV=true), posts are stored in a flat JSON
+ *   file at netlify/.local/blogs-posts.json so Netlify Blobs is not required.
  */
 
 import { getStore } from "@netlify/blobs";

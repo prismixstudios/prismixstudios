@@ -31,23 +31,160 @@
  * See README.md for a full curl example.
  */
 
-import { readPosts, writePosts, mergePosts } from "./lib/postStore.js";
+// ─── Storage: GitHub-backed trial (active since 2026-05-25) ──────────────────
+// The agent write path now reads/writes data/posts.json on GitHub.
+// The frontend reads that file directly from raw.githubusercontent.com.
+import { readPostsFromGitHub, writePostsToGitHub } from "./lib/githubPostStore.js";
+
+// mergePosts is storage-agnostic; still imported from the legacy postStore module
+import { mergePosts } from "./lib/postStore.js";
+
+// LEGACY — Netlify Blobs storage (preserved for easy revert; not active during trial)
+// import { readPosts, writePosts } from "./lib/postStore.js";
+
+// ─── Input validation ─────────────────────────────────────────────────────────
+
+/**
+ * Returns a human-readable error string if `body` fails validation,
+ * or null if everything is acceptable.
+ *
+ * Checked here (not in normalizeAgentPost) so we can reject bad payloads
+ * before touching storage.
+ */
+function validatePostBody(body) {
+  // title — required, string, max 200 chars
+  if (!body.title || typeof body.title !== "string" || !body.title.trim()) {
+    return 'Missing required field: "title" (non-empty string)';
+  }
+  if (body.title.trim().length > 200) {
+    return '"title" must be 200 characters or fewer';
+  }
+
+  // body — required, non-empty string array
+  if (!Array.isArray(body.body) || body.body.length === 0) {
+    return 'Missing required field: "body" (non-empty array of strings)';
+  }
+  if (body.body.length > 100) {
+    return '"body" must contain 100 paragraphs or fewer';
+  }
+  for (var i = 0; i < body.body.length; i++) {
+    if (typeof body.body[i] !== "string") {
+      return '"body[' + i + ']" must be a string';
+    }
+    if (body.body[i].length > 10000) {
+      return '"body" paragraphs must be 10,000 characters or fewer each';
+    }
+  }
+
+  // excerpt — optional string, max 600 chars
+  if (body.excerpt != null) {
+    if (typeof body.excerpt !== "string") return '"excerpt" must be a string';
+    if (body.excerpt.length > 600)        return '"excerpt" must be 600 characters or fewer';
+  }
+
+  // image — optional, must be an http/https URL
+  if (body.image != null) {
+    if (typeof body.image !== "string")      return '"image" must be a string URL or null';
+    if (body.image.length > 2048)            return '"image" URL must be 2048 characters or fewer';
+    if (!isHttpUrl(body.image))              return '"image" must be a valid http or https URL';
+  }
+
+  // linkedinUrl — optional, must be an http/https URL
+  if (body.linkedinUrl != null) {
+    if (typeof body.linkedinUrl !== "string") return '"linkedinUrl" must be a string URL or null';
+    if (body.linkedinUrl.length > 2048)       return '"linkedinUrl" URL must be 2048 characters or fewer';
+    if (!isHttpUrl(body.linkedinUrl))         return '"linkedinUrl" must be a valid http or https URL';
+  }
+
+  // publishedAt — optional, must parse to a real date
+  if (body.publishedAt != null) {
+    if (typeof body.publishedAt !== "string") return '"publishedAt" must be an ISO date string';
+    if (isNaN(new Date(body.publishedAt).getTime())) {
+      return '"publishedAt" is not a valid date';
+    }
+  }
+
+  // author — optional object
+  if (body.author != null) {
+    if (typeof body.author !== "object" || Array.isArray(body.author)) {
+      return '"author" must be an object';
+    }
+    if (body.author.name != null) {
+      if (typeof body.author.name !== "string") return '"author.name" must be a string';
+      if (body.author.name.length > 200)        return '"author.name" must be 200 characters or fewer';
+    }
+    if (body.author.role != null) {
+      if (typeof body.author.role !== "string") return '"author.role" must be a string';
+      if (body.author.role.length > 100)        return '"author.role" must be 100 characters or fewer';
+    }
+    if (body.author.initials != null) {
+      if (typeof body.author.initials !== "string") return '"author.initials" must be a string';
+      if (body.author.initials.length > 10)         return '"author.initials" must be 10 characters or fewer';
+    }
+  }
+
+  // category — optional string, max 100 chars
+  if (body.category != null) {
+    if (typeof body.category !== "string") return '"category" must be a string';
+    if (body.category.length > 100)        return '"category" must be 100 characters or fewer';
+  }
+
+  // pullQuote — optional string, max 600 chars
+  if (body.pullQuote != null) {
+    if (typeof body.pullQuote !== "string") return '"pullQuote" must be a string';
+    if (body.pullQuote.length > 600)        return '"pullQuote" must be 600 characters or fewer';
+  }
+
+  // tags — optional string array, max 20 items, each max 100 chars
+  if (body.tags != null) {
+    if (!Array.isArray(body.tags)) return '"tags" must be an array';
+    if (body.tags.length > 20)     return '"tags" must contain 20 items or fewer';
+    for (var j = 0; j < body.tags.length; j++) {
+      if (typeof body.tags[j] !== "string") return '"tags[' + j + ']" must be a string';
+      if (body.tags[j].length > 100)        return '"tags" items must be 100 characters or fewer each';
+    }
+  }
+
+  return null;
+}
+
+/** Returns true only for absolute http / https URLs. */
+function isHttpUrl(str) {
+  try {
+    var u = new URL(str);
+    return u.protocol === "http:" || u.protocol === "https:";
+  } catch {
+    return false;
+  }
+}
 
 // ─── GET handler ──────────────────────────────────────────────────────────────
 
 /**
- * Returns all blog posts sorted newest-first.
- * Always returns HTTP 200 — an empty array if no posts exist yet.
- * CDN-cached for 5 minutes, stale-while-revalidate for 10 more.
+ * Debug / legacy endpoint — reads posts directly from GitHub and returns them.
+ *
+ * The production frontend no longer calls this route; it reads from the raw
+ * GitHub URL (VITE_BLOGS_JSON_URL) instead.  This handler is kept so you can
+ * inspect the live post store with a plain curl or browser request.
+ *
+ * Cache-Control is set to no-store so you always get the freshest data when
+ * using this for debugging.
+ *
+ * LEGACY NOTE: During the Netlify Blobs era, this called readPosts() from
+ * postStore.js.  Swap the storage call below if reverting to Blobs.
  */
 async function handleGet() {
-  var posts = await readPosts();
+  // ACTIVE: read from GitHub
+  var { posts } = await readPostsFromGitHub();
+
+  // LEGACY (Netlify Blobs — revert by uncommenting):
+  // var posts = await readPosts();
 
   return new Response(JSON.stringify(posts), {
     status: 200,
     headers: {
       "Content-Type":                "application/json",
-      "Cache-Control":               "public, s-maxage=300, stale-while-revalidate=600",
+      "Cache-Control":               "no-store",
       "Access-Control-Allow-Origin": "*",
     },
   });
@@ -94,22 +231,26 @@ async function handlePost(req) {
     return new Response("Request body must be a JSON object", { status: 400 });
   }
 
-  // ── Step 3: Validate required fields ────────────────────────────
-  if (!body.title || typeof body.title !== "string" || !body.title.trim()) {
-    return new Response('Missing required field: "title" (non-empty string)', { status: 400 });
-  }
-
-  if (!Array.isArray(body.body) || body.body.length === 0) {
-    return new Response('Missing required field: "body" (non-empty array of strings)', { status: 400 });
+  // ── Step 3: Validate all fields ─────────────────────────────────
+  var validationError = validatePostBody(body);
+  if (validationError) {
+    return new Response(validationError, { status: 400 });
   }
 
   // ── Step 4: Normalize into the standard post shape ───────────────
   var post = normalizeAgentPost(body);
 
-  // ── Step 5: Merge into Blobs and save ────────────────────────────
-  var existing = await readPosts();
-  var merged   = mergePosts(existing, post);
-  await writePosts(merged);
+  // ── Step 5: Read existing posts from GitHub, merge, write back ───
+  // readPostsFromGitHub returns the current SHA alongside the posts array.
+  // The SHA is required by GitHub's Contents API to update (not create) the file.
+  var { posts: existing, sha } = await readPostsFromGitHub();
+  var merged                   = mergePosts(existing, post);
+  await writePostsToGitHub(merged, sha);
+
+  // LEGACY (Netlify Blobs — revert by uncommenting and removing the lines above):
+  // var existing = await readPosts();
+  // var merged   = mergePosts(existing, post);
+  // await writePosts(merged);
 
   console.log('[blogs] Ingested post "' + post.title + '" (id: ' + post.id + '). Total posts: ' + merged.length);
 

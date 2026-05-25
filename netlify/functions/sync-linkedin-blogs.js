@@ -1,28 +1,40 @@
 /**
  * sync-linkedin-blogs.js — Scheduled Netlify Function
  *
- * Runs every hour. Fetches the latest posts from the Prismix LinkedIn page,
- * normalizes them, and MERGES them into the existing posts already in Blobs.
+ * ┌──────────────────────────────────────────────────────────────────────────┐
+ * │  TEMPORARILY DEPRECATED — GitHub posts.json trial (started 2026-05-25)  │
+ * │                                                                          │
+ * │  The schedule has been removed so this function does not run             │
+ * │  automatically during the trial.  The function body is preserved and     │
+ * │  fully functional — it can still be invoked manually via the Netlify     │
+ * │  dashboard or CLI for testing.                                           │
+ * │                                                                          │
+ * │  During the trial, data/posts.json on GitHub is the source of truth.    │
+ * │  LinkedIn sync writes to Netlify Blobs (postStore.js), which is not      │
+ * │  the active store right now, so re-enabling this sync without also       │
+ * │  migrating it to githubPostStore.js would not have any visible effect.   │
+ * │                                                                          │
+ * │  To re-enable after the trial:                                           │
+ * │    1. Restore the `export var config` block at the bottom of this file.  │
+ * │    2. Update the handler to write via githubPostStore.js instead of      │
+ * │       postStore.js (or switch back to Blobs — your call).                │
+ * └──────────────────────────────────────────────────────────────────────────┘
  *
- * Key behaviour:
- *   - Posts created by the AI agent (source: "website-agent") are NEVER deleted
- *     or overwritten — the merge step in postStore.js handles this.
- *   - If the same post exists as both a LinkedIn import and an agent post
- *     (matched by linkedinUrl), they are collapsed into one record and the
- *     agent's richer content is preferred.
- *   - If the LinkedIn API call fails, posts.json is left untouched and the
- *     error is written to sync-state.json so it can be inspected later.
+ * Original behaviour (preserved for easy re-enable):
+ *   Runs every hour. Fetches the latest posts from the Prismix LinkedIn page,
+ *   normalizes them, and MERGES them into the existing posts in Netlify Blobs.
  *
- * Required environment variables (set in the Netlify dashboard):
+ *   - Posts from the AI agent (source: "website-agent") are never overwritten.
+ *   - If LinkedIn + agent posts share the same linkedinUrl they are merged into
+ *     one record with the agent's richer content winning.
+ *   - If the LinkedIn API call fails, posts.json is left untouched.
+ *
+ * Required env vars:
  *   LINKEDIN_ORG_URN        — e.g. urn:li:organization:12345678
- *   LINKEDIN_ACCESS_TOKEN   — OAuth 2.0 token; expires periodically, must be rotated
+ *   LINKEDIN_ACCESS_TOKEN   — OAuth 2.0 token; expires every ~60 days, must be rotated
  *
  * Optional:
  *   LINKEDIN_API_VERSION    — defaults to "202401"
- *
- * NOTE: LinkedIn access tokens typically expire after 60 days.
- * You must rotate LINKEDIN_ACCESS_TOKEN in the Netlify dashboard before it expires,
- * or the sync will stop working and log an error in sync-state.json.
  */
 
 import { getStore } from "@netlify/blobs";
@@ -238,7 +250,9 @@ export default async function handler() {
   }
 }
 
-// Tell Netlify to run this function on a schedule
-export var config = {
-  schedule: "@hourly",
-};
+// Schedule disabled for the GitHub posts.json trial (2026-05-25).
+// Restore this export when re-enabling LinkedIn sync after the trial.
+//
+// export var config = {
+//   schedule: "@hourly",
+// };

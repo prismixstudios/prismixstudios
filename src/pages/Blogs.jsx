@@ -13,6 +13,41 @@ function isoStamp(iso) {
   return `${d.getFullYear()}.${String(d.getMonth()+1).padStart(2,"0")}.${String(d.getDate()).padStart(2,"0")}`;
 }
 
+/* ── Rich body helpers ──────────────────────────────────── */
+function renderInlineLinks(text) {
+  const urlRegex = /https?:\/\/[^\s]+/g;
+  const result = [];
+  let last = 0, match;
+  while ((match = urlRegex.exec(text)) !== null) {
+    if (match.index > last) result.push(text.slice(last, match.index));
+    result.push(
+      <a key={match.index} href={match[0]} target="_blank" rel="noopener noreferrer">
+        {match[0]}
+      </a>
+    );
+    last = match.index + match[0].length;
+  }
+  if (last < text.length) result.push(text.slice(last));
+  return result.length ? result : [text];
+}
+
+function renderRichParagraph(text, key) {
+  if (text.includes("•")) {
+    const parts = text.split(/\s*•\s*/);
+    const pre = parts[0].trim();
+    const bullets = parts.slice(1).filter(Boolean);
+    return (
+      <div key={key}>
+        {pre && <p style={{ margin: "0 0 8px" }}>{renderInlineLinks(pre)}</p>}
+        <ul>
+          {bullets.map((b, i) => <li key={i}>{renderInlineLinks(b.trim())}</li>)}
+        </ul>
+      </div>
+    );
+  }
+  return <p key={key}>{renderInlineLinks(text)}</p>;
+}
+
 /* ── TextCover – typographic panel for image-less posts ── */
 function TextCover({ post, index, size }) {
   return (
@@ -94,7 +129,7 @@ function FeaturedPost({ post, index }) {
       >
         <div className="bp-solo-inner">
           <div className="bp-feat-num" style={{ textAlign: "center", marginBottom: 18 }}>
-            — {String(index + 1).padStart(2, "0")} / 03 · {post.category}
+             {String(index + 1)} / 3 
           </div>
           <h3>{post.title}</h3>
           <div className="bp-feat-meta" style={{ justifyContent: "center" }}>
@@ -104,19 +139,10 @@ function FeaturedPost({ post, index }) {
             <span className="bp-dotsep" />
             <span>Prismix Journal</span>
           </div>
-          <p className="bp-excerpt" style={{ marginTop: 18, textAlign: "center", maxWidth: "62ch", margin: "18px auto 0", color: "var(--bp-ink-1)", fontSize: 21, lineHeight: 1.65, fontWeight: 300 }}>
-            {post.excerpt}
-          </p>
           <div className="bp-solo-body">
-            {(post.body ?? []).map((p, i) => <p key={i}>{p}</p>)}
+            {(post.body ?? []).map((p, i) => renderRichParagraph(p, i))}
           </div>
-          {post.pullQuote && (
-            <div className="bp-solo-pull">{post.pullQuote}</div>
-          )}
           <Tags tags={post.tags} style={{ justifyContent: "center", marginTop: 28 }} />
-          <div className="bp-feat-foot" style={{ justifyContent: "center", maxWidth: 680, margin: "36px auto 0" }}>
-            <Author post={post} />
-          </div>
         </div>
       </motion.article>
     );
@@ -135,7 +161,7 @@ function FeaturedPost({ post, index }) {
         <FeatCover post={post} index={index} />
       </div>
       <div className="bp-feat-body">
-        <div className="bp-feat-num">— {String(index + 1).padStart(2, "0")} / 03</div>
+        <div className="bp-feat-num">— {String(index + 1)} / 3</div>
         <h3>{post.title}</h3>
         <div className="bp-feat-meta">
           <span>{formatDate(post.publishedAt)}</span>
@@ -144,19 +170,10 @@ function FeaturedPost({ post, index }) {
           <span className="bp-dotsep" />
           <span>Prismix Journal</span>
         </div>
-        <p className="bp-excerpt">{post.excerpt}</p>
         <div className="bp-body">
-          {(post.body ?? []).map((p, i) => <p key={i}>{p}</p>)}
+          {(post.body ?? []).map((p, i) => renderRichParagraph(p, i))}
         </div>
-        {post.pullQuote && <div className="bp-pull">{post.pullQuote}</div>}
         <Tags tags={post.tags} />
-        <div className="bp-feat-foot">
-          <Author post={post} />
-          <span className="bp-arrow">
-            <span>Continue reading</span>
-            <span className="bp-line" />
-          </span>
-        </div>
       </div>
     </motion.article>
   );
@@ -216,13 +233,11 @@ function ArchiveCard({ post, index, expanded, onToggle }) {
                       <span>Prismix Journal</span>
                     </div>
                     <h4>{post.title}</h4>
-                    <p style={{ marginTop: 14, fontSize: 19, color: "var(--bp-ink-2)", fontWeight: 300, lineHeight: 1.6 }}>{post.excerpt}</p>
                     <div className="bp-expanded-full-body" style={{ marginTop: 18 }}>
-                      {(post.body ?? []).map((p, i) => <p key={i}>{p}</p>)}
+                      {(post.body ?? []).map((p, i) => renderRichParagraph(p, i))}
                     </div>
                   </div>
-                  <div style={{ marginTop: 24, display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
-                    <Author post={post} />
+                  <div style={{ marginTop: 24 }}>
                     <Tags tags={(post.tags ?? []).slice(0, 3)} style={{ gap: 6 }} />
                   </div>
                 </div>
@@ -237,25 +252,11 @@ function ArchiveCard({ post, index, expanded, onToggle }) {
                   </span>
                 </div>
                 <h4 className="bp-te-title">{post.title}</h4>
-                {post.pullQuote && <p className="bp-te-pull">"{post.pullQuote}"</p>}
-                <div className="bp-te-columns">
-                  <div className="bp-te-body">
-                    {(post.body ?? []).map((p, i) => <p key={i}>{p}</p>)}
-                  </div>
-                  <aside className="bp-te-aside">
-                    <div>
-                      <div className="bp-eyebrow">Author</div>
-                      <div style={{ marginTop: 10 }}><Author post={post} /></div>
-                    </div>
-                    <div>
-                      <div className="bp-eyebrow">Filed under</div>
-                      <Tags tags={post.tags} style={{ marginTop: 10, gap: 6 }} />
-                    </div>
-                    <div>
-                      <div className="bp-eyebrow">Excerpt</div>
-                      <p style={{ marginTop: 10, color: "var(--bp-ink-1)", fontSize: 18, lineHeight: 1.65, fontWeight: 300 }}>{post.excerpt}</p>
-                    </div>
-                  </aside>
+                <div className="bp-te-body">
+                  {(post.body ?? []).map((p, i) => renderRichParagraph(p, i))}
+                </div>
+                <div style={{ marginTop: 32, paddingTop: 24, borderTop: "1px solid var(--bp-line)" }}>
+                  <Tags tags={post.tags} style={{ gap: 6 }} />
                 </div>
               </div>
             )}
@@ -287,12 +288,11 @@ function ArchiveCard({ post, index, expanded, onToggle }) {
             </div>
             <div style={{ padding: "22px 22px 24px", display: "flex", flexDirection: "column", gap: 14, flex: 1 }}>
               <div className="bp-card-meta">
-                <span>{isoStamp(post.publishedAt)}</span>
-                <span className="bp-dotsep" />
-                <span>{post.readMinutes} min</span>
+                {/* <span>{isoStamp(post.publishedAt)}</span> */}
+                {/* <span className="bp-dotsep" /> */}
+                {/* <span>{post.readMinutes} min</span> */}
               </div>
               <h4>{post.title}</h4>
-              <p className="bp-card-excerpt">{post.excerpt}</p>
               <div className="bp-card-foot">
                 <span className="bp-read-arrow">
                   Read piece
@@ -391,10 +391,9 @@ const Blogs = () => {
           <section style={{ maxWidth: 1320, margin: "0 auto", padding: "0 40px" }}>
             <div className="bp-section-head">
               <div>
-                <div className="bp-eyebrow">§ 01 — Long Form</div>
                 <h2>Editor&rsquo;s selection.</h2>
               </div>
-              <div className="bp-sh-right">three pieces · spring 2025</div>
+              <div className="bp-sh-right">three pieces</div>
             </div>
             <div>
               {featured.map((post, i) => (
@@ -410,7 +409,7 @@ const Blogs = () => {
             <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 40px" }}>
               <div className="bp-section-head" style={{ borderTop: "none", paddingTop: 0 }}>
                 <div>
-                  <div className="bp-eyebrow">§ 02 — Archive</div>
+                  <div className="bp-eyebrow">02 — Archive</div>
                   <h2>More from the journal.</h2>
                 </div>
                 <div className="bp-sh-right">click any card to expand</div>

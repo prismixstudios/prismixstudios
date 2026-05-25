@@ -1,0 +1,119 @@
+[
+  {
+    "id": "videogenx-bootcamp",
+    "title": "VideoGenX — India's first AI filmmaking bootcamp.",
+    "excerpt": "Hands-on, intensive, and built for the next generation of Indian filmmakers. VideoGenX teaches you to make cinema with the tools of tomorrow.",
+    "body": [
+      "Prismix Studios is proud to introduce VideoGenX — India's first AI filmmaking bootcamp, designed for filmmakers, storytellers, and creators who want to master the next generation of cinematic tools.",
+      "Over three intensive days, participants work hands-on with the most powerful generative AI platforms in production today — from script generation and storyboarding to AI-driven visual effects and post-production workflows. Each session is led by industry practitioners who have used these tools on real productions.",
+      "VideoGenX is not a workshop about the future. It is a workshop for people who want to shape it. Whether you are a seasoned director or an aspiring creator, the bootcamp gives you the tools, the language, and the confidence to work with AI as a creative collaborator — not a replacement."
+    ],
+    "publishedAt": "2025-04-10T00:00:00.000Z",
+    "image": "/news1.png",
+    "source": "website-agent",
+    "sourceId": null,
+    "linkedinUrl": null,
+    "author": { "name": "Sahil Nayar", "role": "Co-Founder & CCO", "initials": "SN" },
+    "readMinutes": 6,
+    "category": "Education",
+    "pullQuote": "VideoGenX is not a workshop about the future. It is a workshop for people who want to shape it.",
+    "tags": ["VideoGenX", "AIFilmmaking", "Bootcamp"]
+  },
+  {
+    "id": "get-set-learn",
+    "title": "Prismix partners with Get Set Learn to bring AI education to schools.",
+    "excerpt": "A landmark collaboration to create AI-powered edutainment content for school children across India — curriculum-aligned, culturally resonant, and built to inspire.",
+    "body": [
+      "Prismix Studios is partnering with Get Set Learn, one of India's fastest-growing education platforms, to develop a first-of-its-kind AI-powered content library for school children across all age groups.",
+      "The collaboration will produce animated films, interactive stories, and edutainment modules that use generative AI at every stage — from concept development and character design to voice acting and final rendering. Content will be curriculum-aligned and culturally relevant, developed in close partnership with educators and child psychologists.",
+      "This collaboration reflects Prismix's belief that the most powerful application of AI storytelling is not in entertainment alone, but in the way we teach, inspire, and shape young minds. We are proud to bring that vision into classrooms across the country."
+    ],
+    "publishedAt": "2025-03-20T00:00:00.000Z",
+    "image": "/news2_1.png",
+    "source": "website-agent",
+    "sourceId": null,
+    "linkedinUrl": null,
+    "author": { "name": "Danish Devgn", "role": "Co-Founder & CBO", "initials": "DD" },
+    "readMinutes": 5,
+    "category": "Partnership",
+    "pullQuote": "The most powerful application of AI storytelling is in the way we teach and shape young minds.",
+    "tags": ["Education", "Partnership", "AI"]
+  },
+  {
+    "id": "tata-motors-iwd",
+    "title": "Behind the frame: Tata Motors International Women's Day film.",
+    "excerpt": "A look inside our creative process for the IWD campaign — and how generative AI helped us tell a more honest story, faster.",
+    "body": [
+      "When Tata Motors came to Prismix with a brief for their International Women's Day campaign, we knew the work had to be honest. Not aspirational in the surface-level sense, but deeply, cinematically honest about the women who build things — who engineer, who weld, who lead.",
+      "We began with a detailed research and scripting phase, interviewing Tata Motors employees and synthesising their stories into a single narrative arc. Generative AI tools allowed us to visualise production scenarios before a single frame was filmed, dramatically reducing pre-production time and allowing the creative team to focus entirely on story.",
+      "The result was a 90-second film shared across Tata's global communications channels. It is a reminder that AI does not make stories feel less human. When used carefully, it makes them feel more."
+    ],
+    "publishedAt": "2025-03-08T00:00:00.000Z",
+    "image": null,
+    "source": "website-agent",
+    "sourceId": null,
+    "linkedinUrl": null,
+    "author": { "name": "Sahil Nayar", "role": "Co-Founder & CCO", "initials": "SN" },
+    "readMinutes": 7,
+    "category": "Craft",
+    "pullQuote": "AI does not make stories feel less human. When used carefully, it makes them feel more.",
+    "tags": ["BehindTheScenes", "TataMotors", "AI"]
+  },
+  {
+    "id": "corporate-storytelling",
+    "title": "The future of corporate storytelling is AI-powered.",
+    "excerpt": "Brands are no longer buying ads — they are buying stories. Here is why the shift to AI-driven content creation is permanent.",
+    "body": [
+      "The most expensive thing a brand can do today is produce content that no one remembers. The second most expensive thing is producing it slowly. Generative AI solves both problems at once — and brands that understand this are already pulling ahead.",
+      "At Prismix, we have built a production model that combines human creative direction with AI-powered execution. Our teams develop the narrative strategy, the tone, the emotional architecture of a campaign. AI handles the scale — generating visual variants, accelerating post-production, enabling personalisation at a level that was simply not economically viable before."
+    ],
+    "publishedAt": "2025-02-14T00:00:00.000Z",
+    "image": null,
+    "source": "website-agent",
+    "sourceId": null,
+    "linkedinUrl": null,
+    "author": { "name": "Vatsal Sheth", "role": "Co-Founder & CEO", "initials": "VS" },
+    "readMinutes": 5,
+    "category": "Opinion",
+    "pullQuote": "Brands are not cutting budgets — they are reallocating them toward ideas rather than logistics.",
+    "tags": ["CorporateContent", "Storytelling", "AI"]
+  },
+  {
+    "id": "ajay-devgn-launch",
+    "title": "Ajay Devgn launches generative AI storytelling venture Prismix.",
+    "excerpt": "Variety covered our exclusive launch — a studio built to redefine storytelling across film, digital, and branded content.",
+    "body": [
+      "In early 2025, Variety magazine published an exclusive feature on Ajay Devgn's entry into the generative AI space with the launch of Prismix Studios — a venture that has been in development for over two years.",
+      "Prismix was born from a question: what happens when you give the best storytellers in the world access to tools that have no creative limits? The answer, we believe, is a new kind of cinema — one that is faster, more expressive, and more accessible than anything that has come before."
+    ],
+    "publishedAt": "2025-01-20T00:00:00.000Z",
+    "image": "/news3.png",
+    "source": "website-agent",
+    "sourceId": null,
+    "linkedinUrl": null,
+    "author": { "name": "Danish Devgn", "role": "Co-Founder & CBO", "initials": "DD" },
+    "readMinutes": 4,
+    "category": "Studio",
+    "pullQuote": "What happens when you give the best storytellers in the world access to tools that have no creative limits?",
+    "tags": ["Launch", "GenerativeAI", "Entertainment"]
+  },
+  {
+    "id": "being-human",
+    "title": "Being Human x Prismix: AI meets purpose-driven storytelling.",
+    "excerpt": "Collaborating with Being Human showed us what happens when brand purpose and generative AI intersect — authenticity at scale.",
+    "body": [
+      "Being Human approached Prismix with a challenge familiar to purpose-driven brands: how do you tell a story about strength and transformation without it feeling like an advertisement?",
+      "Our answer was to let the community speak. Working with Being Human's team, we developed a campaign built around real athletes and fitness communities. Generative AI allowed us to create stunning visual sequences that elevated the footage without overwhelming it."
+    ],
+    "publishedAt": "2024-12-05T00:00:00.000Z",
+    "image": null,
+    "source": "website-agent",
+    "sourceId": null,
+    "linkedinUrl": null,
+    "author": { "name": "Sahil Nayar", "role": "Co-Founder & CCO", "initials": "SN" },
+    "readMinutes": 4,
+    "category": "Production",
+    "pullQuote": "AI is at its best when it is in service of something real.",
+    "tags": ["BeingHuman", "BrandStorytelling", "AI"]
+  }
+]

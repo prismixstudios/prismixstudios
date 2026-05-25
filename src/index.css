@@ -210,7 +210,7 @@ body {
   width: 4px; height: 4px; border-radius: 999px; background: var(--bp-ink-3);
 }
 .bp-feat h3 {
-  font-weight: 300; font-size: clamp(32px, 3.6vw, 52px);
+  font-weight: 700; font-size: clamp(32px, 3.6vw, 52px);
   line-height: 1.02; letter-spacing: -0.025em; margin: 18px 0 22px;
   font-family: 'Manrope', sans-serif;
 }
@@ -218,10 +218,10 @@ body {
   color: var(--bp-ink-1); font-size: 21px; line-height: 1.65; font-weight: 300; max-width: 54ch;
 }
 .bp-feat .bp-body {
-  color: var(--bp-ink-1); font-size: 19.5px; line-height: 1.75; font-weight: 300;
+  color: var(--bp-ink-0); font-size: 20px; line-height: 1.8; font-weight: 400;
   margin-top: 22px; max-width: 60ch;
 }
-.bp-feat .bp-body p + p { margin-top: 14px; }
+.bp-feat .bp-body > * + * { margin-top: 40px; }
 .bp-pull {
   border-left: 1px solid var(--bp-line-2); padding: 10px 0 10px 22px; margin-top: 24px;
   font-style: italic; font-weight: 300; color: var(--bp-ink-0);
@@ -251,16 +251,16 @@ body {
 .bp-solo .bp-solo-inner { max-width: 880px; margin: 0 auto; }
 .bp-solo h3 {
   font-size: clamp(40px, 5.4vw, 80px); text-align: center;
-  font-weight: 200; letter-spacing: -0.03em; line-height: 1.0;
-  margin: 8px auto 18px; max-width: 18ch;
+  font-weight: 700; letter-spacing: -0.03em; line-height: 1.0;
+  margin: 8px auto 18px; max-width: 22ch;
   font-family: 'Manrope', sans-serif;
 }
 .bp-solo .bp-solo-body {
-  columns: 2; column-gap: 48px; margin-top: 42px;
-  color: var(--bp-ink-1); font-size: 19px; line-height: 1.8; font-weight: 300;
+  margin-top: 42px; max-width: 72ch; margin-left: auto; margin-right: auto;
+  color: var(--bp-ink-0); font-size: 20px; line-height: 1.85; font-weight: 400;
 }
-.bp-solo .bp-solo-body p { break-inside: avoid; margin: 0; }
-.bp-solo .bp-solo-body p + p { margin-top: 14px; }
+.bp-solo .bp-solo-body p { margin: 0; }
+.bp-solo .bp-solo-body > * + * { margin-top: 40px; }
 .bp-solo .bp-solo-body p:first-child::first-letter {
   font-size: 64px; float: left; line-height: 0.9; margin: 6px 8px 0 0; font-weight: 300;
   background: var(--bp-grad); -webkit-background-clip: text; background-clip: text; color: transparent;
@@ -276,7 +276,7 @@ body {
 }
 .bp-solo-pull::before { margin-bottom: 22px; }
 .bp-solo-pull::after  { margin-top: 22px; }
-@media (max-width: 760px) { .bp-solo .bp-solo-body { columns: 1; } }
+
 
 /* — Archive card — */
 .bp-card {
@@ -299,7 +299,7 @@ body {
   letter-spacing: 0.22em; text-transform: uppercase;
 }
 .bp-card .bp-card-meta .bp-dotsep { width: 3px; height: 3px; border-radius: 999px; background: var(--bp-ink-3); }
-.bp-card h4 { font-weight: 400; font-size: 22px; line-height: 1.18; letter-spacing: -0.015em; margin: 0; font-family: 'Manrope', sans-serif; }
+.bp-card h4 { font-weight: 700; font-size: 22px; line-height: 1.18; letter-spacing: -0.015em; margin: 0; font-family: 'Manrope', sans-serif; }
 .bp-card .bp-card-excerpt { color: var(--bp-ink-2); font-size: 18px; line-height: 1.6; font-weight: 300; }
 .bp-card-foot {
   display: flex; align-items: center; justify-content: space-between;
@@ -322,11 +322,11 @@ body {
   display: flex; flex-direction: column; justify-content: space-between;
 }
 .bp-card.bp-expanded h4 {
-  font-size: 38px; font-weight: 300; line-height: 1.05; letter-spacing: -0.02em;
+  font-size: 38px; font-weight: 700; line-height: 1.05; letter-spacing: -0.02em;
   margin-top: 14px;
 }
-.bp-expanded-full-body { color: var(--bp-ink-1); font-size: 19px; line-height: 1.75; font-weight: 300; margin-top: 10px; }
-.bp-expanded-full-body p + p { margin-top: 12px; }
+.bp-expanded-full-body { color: var(--bp-ink-0); font-size: 20px; line-height: 1.8; font-weight: 400; margin-top: 10px; }
+.bp-expanded-full-body > * + * { margin-top: 40px; }
 .bp-close-btn {
   position: absolute; right: 18px; top: 18px; z-index: 5;
   width: 38px; height: 38px; border-radius: 999px;
@@ -363,7 +363,7 @@ body {
 .bp-te-num { font-family: 'JetBrains Mono', monospace; font-size: 15px; letter-spacing: 0.3em; color: var(--bp-ink-3); }
 .bp-te-meta { margin-left: auto; font-family: 'JetBrains Mono', monospace; font-size: 14px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--bp-ink-2); }
 .bp-te-title {
-  font-weight: 200; font-size: clamp(36px, 4.4vw, 64px); line-height: 1.0; letter-spacing: -0.028em;
+  font-weight: 700; font-size: clamp(36px, 4.4vw, 64px); line-height: 1.0; letter-spacing: -0.028em;
   margin: 0 0 28px; max-width: 22ch; font-family: 'Manrope', sans-serif;
 }
 .bp-te-pull {
@@ -373,23 +373,27 @@ body {
   border-left: 1px solid var(--bp-line-2);
   background: linear-gradient(90deg, rgba(160,120,255,0.06), transparent 60%);
 }
-.bp-te-columns { display: grid; grid-template-columns: 1.6fr 1fr; gap: 64px; }
-.bp-te-body { color: var(--bp-ink-1); font-size: 19.5px; line-height: 1.85; font-weight: 300; }
+.bp-te-body { color: var(--bp-ink-0); font-size: 20px; line-height: 1.85; font-weight: 400; max-width: 72ch; }
 .bp-te-body p { margin: 0; }
-.bp-te-body p + p { margin-top: 14px; }
+.bp-te-body > * + * { margin-top: 40px; }
 .bp-te-body p:first-child::first-letter {
   font-size: 52px; float: left; line-height: 0.9; margin: 6px 10px 0 0; font-weight: 300;
   background: var(--bp-grad); -webkit-background-clip: text; background-clip: text; color: transparent;
 }
-.bp-te-aside {
-  display: flex; flex-direction: column; gap: 28px;
-  padding-left: 32px; border-left: 1px solid var(--bp-line);
-}
 @media (max-width: 900px) {
   .bp-text-expanded { padding: 36px 28px; }
-  .bp-te-columns { grid-template-columns: 1fr; gap: 28px; }
-  .bp-te-aside { padding-left: 0; border-left: none; border-top: 1px solid var(--bp-line); padding-top: 28px; }
   .bp-te-meta { margin-left: 0; }
+}
+
+/* Rich body — links and bullet lists */
+.bp-te-body ul, .bp-solo .bp-solo-body ul, .bp-feat .bp-body ul, .bp-expanded-full-body ul {
+  padding-left: 1.4em; margin: 6px 0 12px; list-style: disc;
+}
+.bp-te-body li, .bp-solo .bp-solo-body li, .bp-feat .bp-body li, .bp-expanded-full-body li {
+  margin-bottom: 5px; line-height: 1.65;
+}
+.bp-te-body a, .bp-solo .bp-solo-body a, .bp-feat .bp-body a, .bp-expanded-full-body a {
+  color: #6aa0ff; text-decoration: underline; word-break: break-all;
 }
 
 /* Archive grid responsive */

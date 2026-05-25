@@ -10,6 +10,7 @@ export default async function handler(req) {
   if (req.method !== "GET") {
     return new Response("Method Not Allowed", { status: 405 });
   }
+  
 
   try {
     const store = getStore({ name: "blogs", consistency: "strong" });
