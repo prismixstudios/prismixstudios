@@ -1,5 +1,36 @@
 [
   {
+    "id": "ai-coding-agents-may-influence-how-creative-systems-are-buil-2026-05-26",
+    "title": "AI coding agents may influence how creative systems are built",
+    "excerpt": "AI coding agents may influence how creative systems are built A recent YouTube video on Routa, described as an AI coding tool built like a delivery team, is a useful watch for teams thinking about AI beyond content generation. Public reference: https://www.youtube.com/watch?v=…",
+    "body": [
+      "AI coding agents may influence how creative systems are built",
+      "A recent YouTube video on Routa, described as an AI coding tool built like a delivery team, is a useful watch for teams thinking about AI beyond content generation.",
+      "Public reference: https://www.youtube.com/watch?v=_16PhraFYjQ",
+      "Creative AI work increasingly depends on the systems around the output: internal tools, review interfaces, pipeline connectors, asset libraries, prompt libraries, and automation layers.",
+      "That makes AI-assisted software workflows relevant to studios and content teams — especially when the goal is to make creative production more structured, repeatable, and scalable.",
+      "The practical question is not whether an agent can “do everything.” It is where agentic support can safely reduce operational friction while keeping human oversight, creative direction, and production accountability intact.",
+      "Draft for manual approval.",
+      "#AIWorkflows #GenAI #CreativeTechnology #ProductionAI"
+    ],
+    "publishedAt": "2026-05-26T15:08:08.372Z",
+    "image": null,
+    "source": "website-agent",
+    "sourceId": null,
+    "linkedinUrl": null,
+    "author": {
+      "name": "Prismix Studios",
+      "role": "AI Blog Agent",
+      "initials": "PS"
+    },
+    "readMinutes": 1,
+    "category": "Prismix Journal",
+    "pullQuote": "AI coding agents may influence how creative systems are built A recent YouTube video on Routa, described as an AI coding tool built like a delivery team, is a useful watch for teams thinking about AI ",
+    "tags": [],
+    "published": true,
+    "dryRun": false
+  },
+  {
     "id": "prismix-website-connection-test-2026-05-26",
     "source": "website-agent",
     "sourceId": null,
@@ -100,11 +131,19 @@
     "source": "website-agent",
     "sourceId": null,
     "linkedinUrl": null,
-    "author": { "name": "Sahil Nayar", "role": "Co-Founder & CCO", "initials": "SN" },
+    "author": {
+      "name": "Sahil Nayar",
+      "role": "Co-Founder & CCO",
+      "initials": "SN"
+    },
     "readMinutes": 6,
     "category": "Education",
     "pullQuote": "VideoGenX is not a workshop about the future. It is a workshop for people who want to shape it.",
-    "tags": ["VideoGenX", "AIFilmmaking", "Bootcamp"],
+    "tags": [
+      "VideoGenX",
+      "AIFilmmaking",
+      "Bootcamp"
+    ],
     "published": true,
     "dryRun": false
   },
@@ -122,11 +161,19 @@
     "source": "website-agent",
     "sourceId": null,
     "linkedinUrl": null,
-    "author": { "name": "Danish Devgn", "role": "Co-Founder & CBO", "initials": "DD" },
+    "author": {
+      "name": "Danish Devgn",
+      "role": "Co-Founder & CBO",
+      "initials": "DD"
+    },
     "readMinutes": 5,
     "category": "Partnership",
     "pullQuote": "The most powerful application of AI storytelling is in the way we teach and shape young minds.",
-    "tags": ["Education", "Partnership", "AI"],
+    "tags": [
+      "Education",
+      "Partnership",
+      "AI"
+    ],
     "published": true,
     "dryRun": false
   },
@@ -144,11 +191,19 @@
     "source": "website-agent",
     "sourceId": null,
     "linkedinUrl": null,
-    "author": { "name": "Sahil Nayar", "role": "Co-Founder & CCO", "initials": "SN" },
+    "author": {
+      "name": "Sahil Nayar",
+      "role": "Co-Founder & CCO",
+      "initials": "SN"
+    },
     "readMinutes": 7,
     "category": "Craft",
     "pullQuote": "AI does not make stories feel less human. When used carefully, it makes them feel more.",
-    "tags": ["BehindTheScenes", "TataMotors", "AI"],
+    "tags": [
+      "BehindTheScenes",
+      "TataMotors",
+      "AI"
+    ],
     "published": true,
     "dryRun": false
   },
@@ -165,11 +220,19 @@
     "source": "website-agent",
     "sourceId": null,
     "linkedinUrl": null,
-    "author": { "name": "Vatsal Sheth", "role": "Co-Founder & CEO", "initials": "VS" },
+    "author": {
+      "name": "Vatsal Sheth",
+      "role": "Co-Founder & CEO",
+      "initials": "VS"
+    },
     "readMinutes": 5,
     "category": "Opinion",
     "pullQuote": "Brands are not cutting budgets — they are reallocating them toward ideas rather than logistics.",
-    "tags": ["CorporateContent", "Storytelling", "AI"],
+    "tags": [
+      "CorporateContent",
+      "Storytelling",
+      "AI"
+    ],
     "published": true,
     "dryRun": false
   },
@@ -186,11 +249,19 @@
     "source": "website-agent",
     "sourceId": null,
     "linkedinUrl": null,
-    "author": { "name": "Danish Devgn", "role": "Co-Founder & CBO", "initials": "DD" },
+    "author": {
+      "name": "Danish Devgn",
+      "role": "Co-Founder & CBO",
+      "initials": "DD"
+    },
     "readMinutes": 4,
     "category": "Studio",
     "pullQuote": "What happens when you give the best storytellers in the world access to tools that have no creative limits?",
-    "tags": ["Launch", "GenerativeAI", "Entertainment"],
+    "tags": [
+      "Launch",
+      "GenerativeAI",
+      "Entertainment"
+    ],
     "published": true,
     "dryRun": false
   },
@@ -207,11 +278,19 @@
     "source": "website-agent",
     "sourceId": null,
     "linkedinUrl": null,
-    "author": { "name": "Sahil Nayar", "role": "Co-Founder & CCO", "initials": "SN" },
+    "author": {
+      "name": "Sahil Nayar",
+      "role": "Co-Founder & CCO",
+      "initials": "SN"
+    },
     "readMinutes": 4,
     "category": "Production",
     "pullQuote": "AI is at its best when it is in service of something real.",
-    "tags": ["BeingHuman", "BrandStorytelling", "AI"],
+    "tags": [
+      "BeingHuman",
+      "BrandStorytelling",
+      "AI"
+    ],
     "published": true,
     "dryRun": false
   }
