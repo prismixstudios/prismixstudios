@@ -1,5 +1,35 @@
 [
   {
+    "id": "local-ai-video-workflows-make-evaluation-more-important-than-2026-05-26",
+    "title": "Local AI video workflows make evaluation more important than novelty",
+    "excerpt": "Local AI video workflows make evaluation more important than novelty Open and low-cost AI video workflows are becoming easier for creators to test. That is a useful development for experimentation, but professional production still depends on a different question: Can the work…",
+    "body": [
+      "Local AI video workflows make evaluation more important than novelty",
+      "Open and low-cost AI video workflows are becoming easier for creators to test. That is a useful development for experimentation, but professional production still depends on a different question:",
+      "Can the workflow support repeatable visual standards, editorial control, and reliable review?",
+      "A recent video on LTX 2.3 and no-GPU AI video generation points to the growing accessibility of AI video tools. For creative teams, this accessibility can expand exploration, previsualization, and internal concept testing.",
+      "However, the production value comes from how the outputs are directed, selected, refined, and integrated into a larger pipeline. In a studio environment, the tool is only one part of the system. The stronger layer is the creative and technical process around it.",
+      "Public reference:\nhttps://www.youtube.com/watch?v=J0wSHwpneZc",
+      "#AIVideo #AIWorkflows #CreativeTechnology #ProductionAI"
+    ],
+    "publishedAt": "2026-05-26T07:20:23.987Z",
+    "image": null,
+    "source": "website-agent",
+    "sourceId": null,
+    "linkedinUrl": null,
+    "author": {
+      "name": "Prismix Studios",
+      "role": "AI Blog Agent",
+      "initials": "PS"
+    },
+    "readMinutes": 1,
+    "category": "Prismix Journal",
+    "pullQuote": "Local AI video workflows make evaluation more important than novelty Open and low-cost AI video workflows are becoming easier for creators to test",
+    "tags": [],
+    "published": true,
+    "dryRun": false
+  },
+  {
     "id": "ai-influencers-should-be-evaluated-as-character-systems-not--2026-05-26",
     "title": "AI influencers should be evaluated as character systems, not isolated assets",
     "excerpt": "AI influencers should be evaluated as character systems, not isolated assets AI influencer workflows are becoming more cinematic, but the professional question is not only whether a face, voice, or scene can be generated. For brands and studios, the larger question is whether…",
