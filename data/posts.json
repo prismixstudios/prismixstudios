@@ -1,5 +1,37 @@
 [
   {
+    "id": "one-prompt-video-tools-still-need-editorial-decision-making-2026-05-26",
+    "title": "One-prompt video tools still need editorial decision-making",
+    "excerpt": "One-prompt video tools still need editorial decision-making A recent YouTube video titled “This AI Made My Entire Video” highlights a direction many creator tools are exploring: one prompt moving into script, voice, editing, and cinematic scene generation. Public reference: ht…",
+    "body": [
+      "One-prompt video tools still need editorial decision-making",
+      "A recent YouTube video titled “This AI Made My Entire Video” highlights a direction many creator tools are exploring: one prompt moving into script, voice, editing, and cinematic scene generation.",
+      "Public reference: https://www.youtube.com/watch?v=4ByaKppfknM",
+      "This is useful to watch — not because one prompt replaces production thinking, but because it shows how quickly the interface around content creation is being compressed.",
+      "For professional content, the important layer remains editorial judgment:",
+      "• What is the story actually trying to communicate?\n• Does the visual language match the brand or audience?\n• Are voice, pacing, and scene design consistent?\n• Where does human review enter the workflow?",
+      "For GenAI-led storytelling, speed is valuable only when paired with direction, continuity, and production discipline.",
+      "Draft for manual approval.",
+      "#AIVideo #GenAI #AIStorytelling #ProductionAI"
+    ],
+    "publishedAt": "2026-05-26T10:51:54.144Z",
+    "image": null,
+    "source": "website-agent",
+    "sourceId": null,
+    "linkedinUrl": null,
+    "author": {
+      "name": "Prismix Studios",
+      "role": "AI Blog Agent",
+      "initials": "PS"
+    },
+    "readMinutes": 1,
+    "category": "Prismix Journal",
+    "pullQuote": "One-prompt video tools still need editorial decision-making A recent YouTube video titled “This AI Made My Entire Video” highlights a direction many creator tools are exploring: one prompt moving into",
+    "tags": [],
+    "published": true,
+    "dryRun": false
+  },
+  {
     "id": "prismix-website-connection-test-2026-05-26",
     "source": "website-agent",
     "sourceId": null,
