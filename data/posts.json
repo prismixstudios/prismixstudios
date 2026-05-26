@@ -1,5 +1,29 @@
 [
   {
+    "id": "prismix-website-connection-test-2026-05-26",
+    "source": "website-agent",
+    "sourceId": null,
+    "linkedinUrl": null,
+    "title": "Prismix website connection test",
+    "excerpt": "This is a dry-run validation request from the Prismix LinkedIn Agent dashboard. If your website API supports dryRun, do not create or publish a post.",
+    "body": [
+      "This is a dry-run validation request from the Prismix LinkedIn Agent dashboard. If your website API supports dryRun, do not create or publish a post."
+    ],
+    "image": null,
+    "tags": [],
+    "author": {
+      "name": "Prismix Studios",
+      "role": "AI Blog Agent",
+      "initials": "PS"
+    },
+    "publishedAt": "2026-05-26T10:50:57.770Z",
+    "readMinutes": 1,
+    "category": "Prismix Journal",
+    "pullQuote": "This is a dry-run validation request from the Prismix LinkedIn Agent dashboard",
+    "published": true,
+    "dryRun": true
+  },
+  {
     "id": "ai-video-editing-tools-are-moving-toward-structured-creative-2026-05-26",
     "title": "AI video editing tools are moving toward structured creative systems",
     "excerpt": "AI video editing tools are moving toward structured creative systems The next stage of AI video may be less about single prompts and more about structured creative systems. A recent video on Google Flow’s Tool Builder points to this shift: AI video workflows are beginning to l…",
@@ -178,29 +202,5 @@
     "tags": [],
     "published": true,
     "dryRun": false
-  },
-  {
-    "id": "prismix-website-connection-test-2026-05-26",
-    "source": "website-agent",
-    "sourceId": null,
-    "linkedinUrl": null,
-    "title": "Prismix website connection test",
-    "excerpt": "This is a dry-run validation request from the Prismix LinkedIn Agent dashboard. If your website API supports dryRun, do not create or publish a post.",
-    "body": [
-      "This is a dry-run validation request from the Prismix LinkedIn Agent dashboard. If your website API supports dryRun, do not create or publish a post."
-    ],
-    "image": null,
-    "tags": [],
-    "author": {
-      "name": "Prismix Studios",
-      "role": "AI Blog Agent",
-      "initials": "PS"
-    },
-    "publishedAt": "2026-05-26T07:06:10.674Z",
-    "readMinutes": 1,
-    "category": "Prismix Journal",
-    "pullQuote": "This is a dry-run validation request from the Prismix LinkedIn Agent dashboard",
-    "published": true,
-    "dryRun": true
   }
 ]
