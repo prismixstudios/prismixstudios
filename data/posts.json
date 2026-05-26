@@ -1,5 +1,35 @@
 [
   {
+    "id": "ai-video-editing-tools-are-moving-toward-structured-creative-2026-05-26",
+    "title": "AI video editing tools are moving toward structured creative systems",
+    "excerpt": "AI video editing tools are moving toward structured creative systems The next stage of AI video may be less about single prompts and more about structured creative systems. A recent video on Google Flow’s Tool Builder points to this shift: AI video workflows are beginning to l…",
+    "body": [
+      "AI video editing tools are moving toward structured creative systems",
+      "The next stage of AI video may be less about single prompts and more about structured creative systems.",
+      "A recent video on Google Flow’s Tool Builder points to this shift: AI video workflows are beginning to look more like configurable environments where teams can shape process, not only generate clips.",
+      "For professional content teams, that distinction matters. A useful AI video system should support repeatable formats, reviewable decisions, brand consistency, and adaptation across campaign needs.",
+      "This is especially relevant for media, advertising, education, and enterprise communication, where the requirement is rarely one standalone asset. It is often a connected content system with multiple versions, regions, and use cases.",
+      "Public reference:\nhttps://www.youtube.com/watch?v=qnRuuloXzek",
+      "#GenAI #AIVideo #CreativeTechnology #ProductionAI"
+    ],
+    "publishedAt": "2026-05-26T07:21:33.196Z",
+    "image": null,
+    "source": "website-agent",
+    "sourceId": null,
+    "linkedinUrl": null,
+    "author": {
+      "name": "Prismix Studios",
+      "role": "AI Blog Agent",
+      "initials": "PS"
+    },
+    "readMinutes": 1,
+    "category": "Prismix Journal",
+    "pullQuote": "AI video editing tools are moving toward structured creative systems The next stage of AI video may be less about single prompts and more about structured creative systems",
+    "tags": [],
+    "published": true,
+    "dryRun": false
+  },
+  {
     "id": "3d-to-ai-workflows-could-become-a-bridge-between-control-and-2026-05-26",
     "title": "3D-to-AI workflows could become a bridge between control and generation",
     "excerpt": "3D-to-AI workflows could become a bridge between control and generation One of the most important questions in AI video is control. Pure text-to-video workflows can be powerful for exploration, but professional teams often need more predictable structure: camera intent, charac…",
