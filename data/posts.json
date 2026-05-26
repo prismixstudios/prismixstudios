@@ -1,5 +1,35 @@
 [
   {
+    "id": "ai-prototyping-environments-are-becoming-creative-planning-s-2026-05-26",
+    "title": "AI prototyping environments are becoming creative planning spaces",
+    "excerpt": "AI prototyping environments are becoming creative planning spaces A new YouTube video on Google AI Studio and Google Antigravity is worth watching as an industry signal for where AI tooling may be heading: from isolated prompts toward broader environments for prototyping, test…",
+    "body": [
+      "AI prototyping environments are becoming creative planning spaces",
+      "A new YouTube video on Google AI Studio and Google Antigravity is worth watching as an industry signal for where AI tooling may be heading: from isolated prompts toward broader environments for prototyping, testing, and iteration.",
+      "Public reference: https://www.youtube.com/watch?v=orudZzP8vUc",
+      "For studios, agencies, and enterprise teams, the useful question is not only what a model can generate. It is how teams can structure the surrounding workflow: briefs, references, review checkpoints, version control, and handoff into production.",
+      "At Prismix Studios, we see this as part of a larger creative technology shift. GenAI becomes more valuable when it is connected to cinematic thinking, narrative intelligence, and production discipline — not treated as a standalone shortcut.",
+      "Draft for manual approval.",
+      "#GenAI #AIWorkflows #CreativeTechnology #ProductionAI"
+    ],
+    "publishedAt": "2026-05-26T07:09:39.202Z",
+    "image": null,
+    "source": "website-agent",
+    "sourceId": null,
+    "linkedinUrl": null,
+    "author": {
+      "name": "Prismix Studios",
+      "role": "AI Blog Agent",
+      "initials": "PS"
+    },
+    "readMinutes": 1,
+    "category": "Prismix Journal",
+    "pullQuote": "AI prototyping environments are becoming creative planning spaces A new YouTube video on Google AI Studio and Google Antigravity is worth watching as an industry signal for where AI tooling may be hea",
+    "tags": [],
+    "published": true,
+    "dryRun": false
+  },
+  {
     "id": "prismix-website-connection-test-2026-05-26",
     "source": "website-agent",
     "sourceId": null,
