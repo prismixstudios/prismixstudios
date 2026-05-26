@@ -31,7 +31,19 @@ function renderInlineLinks(text) {
   return result.length ? result : [text];
 }
 
-function renderRichParagraph(text, key) {
+function renderRichParagraph(text, key, isHashtag) {
+  if (isHashtag) {
+    return (
+      <p key={key} style={{
+        background: "linear-gradient(to right, #60a5fa, #a855f7, #ec4899)",
+        WebkitBackgroundClip: "text", backgroundClip: "text",
+        color: "transparent", WebkitTextFillColor: "transparent",
+        fontWeight: 600, margin: 0,
+      }}>
+        {text}
+      </p>
+    );
+  }
   if (text.includes("•")) {
     const parts = text.split(/\s*•\s*/);
     const pre = parts[0].trim();
@@ -115,7 +127,68 @@ function Tags({ tags, style }) {
 
 /* ── Featured post ───────────────────────────────────── */
 function FeaturedPost({ post, index }) {
-  const reverse = post.image && index % 2 === 1;
+  const hasImage = !!post.image;
+
+  return (
+    <motion.article
+      className="bp-card bp-expanded bp-featured-open-card"
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      viewport={{ once: true }}
+    >
+      {hasImage ? (
+        <div className="bp-expanded-layout">
+          <div className="bp-card-cover">
+            <img
+              src={post.image}
+              alt={post.title}
+              style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
+            />
+            <div className="bp-pill" style={{ position: "absolute", left: 12, top: 12, zIndex: 2 }}>
+              <span className="bp-pill-dot" />
+              <span>{post.category}</span>
+            </div>
+          </div>
+          <div className="bp-expanded-body">
+            <div>
+              <div className="bp-card-meta">
+                <span>{isoStamp(post.publishedAt)}</span>
+                <span className="bp-dotsep" />
+                <span>{post.readMinutes} min</span>
+                <span className="bp-dotsep" />
+                <span>Featured {String(index + 1).padStart(2, "0")}</span>
+              </div>
+              <h4>{post.title}</h4>
+              <div className="bp-expanded-full-body" style={{ marginTop: 18 }}>
+                {(post.body ?? []).map((p, i, arr) => renderRichParagraph(p, i, i === arr.length - 1))}
+              </div>
+            </div>
+            <div style={{ marginTop: 24 }}>
+              <Tags tags={(post.tags ?? []).slice(0, 3)} style={{ gap: 6 }} />
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div className="bp-text-expanded">
+          <div className="bp-te-head">
+            <span className="bp-te-cat">{post.category}</span>
+            <span className="bp-te-num">{String(index + 1).padStart(2, "0")}</span>
+            <span className="bp-te-meta bp-mono">
+              {isoStamp(post.publishedAt)} &nbsp;·&nbsp; {post.readMinutes} MIN
+            </span>
+          </div>
+          <h4 className="bp-te-title">{post.title}</h4>
+          <div className="bp-te-body">
+            {(post.body ?? []).map((p, i, arr) => renderRichParagraph(p, i, i === arr.length - 1))}
+          </div>
+          <div style={{ marginTop: 32, paddingTop: 24, borderTop: "1px solid var(--bp-line)" }}>
+            <Tags tags={post.tags} style={{ gap: 6 }} />
+          </div>
+        </div>
+      )}
+    </motion.article>
+  );
 
   /* Text-only: solo centered layout */
   if (!post.image) {
@@ -140,7 +213,7 @@ function FeaturedPost({ post, index }) {
             <span>Prismix Journal</span>
           </div>
           <div className="bp-solo-body">
-            {(post.body ?? []).map((p, i) => renderRichParagraph(p, i))}
+            {(post.body ?? []).map((p, i, arr) => renderRichParagraph(p, i, i === arr.length - 1))}
           </div>
           <Tags tags={post.tags} style={{ justifyContent: "center", marginTop: 28 }} />
         </div>
@@ -171,7 +244,7 @@ function FeaturedPost({ post, index }) {
           <span>Prismix Journal</span>
         </div>
         <div className="bp-body">
-          {(post.body ?? []).map((p, i) => renderRichParagraph(p, i))}
+          {(post.body ?? []).map((p, i, arr) => renderRichParagraph(p, i, i === arr.length - 1))}
         </div>
         <Tags tags={post.tags} />
       </div>
@@ -234,7 +307,7 @@ function ArchiveCard({ post, index, expanded, onToggle }) {
                     </div>
                     <h4>{post.title}</h4>
                     <div className="bp-expanded-full-body" style={{ marginTop: 18 }}>
-                      {(post.body ?? []).map((p, i) => renderRichParagraph(p, i))}
+                      {(post.body ?? []).map((p, i, arr) => renderRichParagraph(p, i, i === arr.length - 1))}
                     </div>
                   </div>
                   <div style={{ marginTop: 24 }}>
@@ -253,7 +326,7 @@ function ArchiveCard({ post, index, expanded, onToggle }) {
                 </div>
                 <h4 className="bp-te-title">{post.title}</h4>
                 <div className="bp-te-body">
-                  {(post.body ?? []).map((p, i) => renderRichParagraph(p, i))}
+                  {(post.body ?? []).map((p, i, arr) => renderRichParagraph(p, i, i === arr.length - 1))}
                 </div>
                 <div style={{ marginTop: 32, paddingTop: 24, borderTop: "1px solid var(--bp-line)" }}>
                   <Tags tags={post.tags} style={{ gap: 6 }} />
@@ -345,8 +418,11 @@ const Blogs = () => {
 
       <div style={{ position: "relative", zIndex: 2 }}>
         {/* ── Hero ── */}
-        <section style={{ padding: "120px 0 80px", position: "relative" }}>
-          <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 40px" }}>
+        <section className="bp-hero-section" style={{ padding: "120px 0 28px", position: "relative", minHeight: "100vh" }}>
+          <div className="bp-hero-image" aria-hidden="true">
+            <img src="/blogs-bg-1.png" alt="" />
+          </div>
+          <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 40px", minHeight: "calc(100vh - 280px)", display: "flex", flexDirection: "column" }}>
             <span className="bp-pill">
               <span className="bp-pill-dot" />
               <span>Prismix Journal · Latest</span>
@@ -356,14 +432,14 @@ const Blogs = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, ease: "easeOut" }}
               style={{
-                fontWeight: 300, fontSize: "clamp(56px,9vw,132px)", lineHeight: 0.95,
-                letterSpacing: "-0.04em", margin: "18px 0 0", fontFamily: "'Manrope',sans-serif",
+                fontWeight: 400, fontSize: "clamp(56px,9vw,132px)", lineHeight: 0.95,
+                letterSpacing: "0.04em", margin: "18px 0 0", fontFamily: "'Bebas Neue', sans-serif",
               }}
             >
               Notes from the<br />
               <em
                 className="bp-grad-text"
-                style={{ fontStyle: "italic", fontWeight: 200 }}
+                style={{ fontStyle: "normal", fontWeight: 400 }}
               >
               cutting room.
               </em>
@@ -373,6 +449,7 @@ const Blogs = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.15, ease: "easeOut" }}
               style={{ display: "flex", justifyContent: "space-between", gap: 60, marginTop: 48, alignItems: "flex-end", flexWrap: "wrap" }}
+              className="bp-hero-bottom-copy"
             >
               <p style={{ maxWidth: 560, color: "var(--bp-ink-1)", fontSize: 22, lineHeight: 1.6, fontWeight: 300, margin: 0 }}>
                 Essays, post-mortems, and production diaries from the team behind Prismix —
