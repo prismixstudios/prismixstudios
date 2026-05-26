@@ -103,12 +103,9 @@ function validatePostBody(body) {
     if (!isHttpUrl(body.linkedinUrl))         return '"linkedinUrl" must be a valid http or https URL';
   }
 
-  // publishedAt — optional, must parse to a real date
-  if (body.publishedAt != null) {
-    if (typeof body.publishedAt !== "string") return '"publishedAt" must be an ISO date string';
-    if (isNaN(new Date(body.publishedAt).getTime())) {
-      return '"publishedAt" is not a valid date';
-    }
+  // publishedAt — optional; invalid values are silently ignored (normalizeAgentPost falls back to now)
+  if (body.publishedAt != null && typeof body.publishedAt !== "string") {
+    return '"publishedAt" must be a string';
   }
 
   // author — optional object
@@ -223,55 +220,72 @@ async function handleGet() {
  *   5. Write back to Blobs and return the saved post
  */
 async function handlePost(req) {
+  console.log("[blogs] POST /api/blogs received");
+
   // ── Step 1: Check the bearer token ──────────────────────────────
   var token = process.env.BLOG_INGEST_TOKEN;
 
   if (!token) {
-    // The Netlify env var has not been configured — server-side mistake
-    console.error("[blogs] BLOG_INGEST_TOKEN environment variable is not set.");
+    console.error("[blogs] BLOG_INGEST_TOKEN is not set — check Netlify env vars for this deploy context");
     return new Response("Server misconfiguration", { status: 500 });
   }
 
   var authHeader = req.headers.get("authorization") ?? "";
 
   if (authHeader !== "Bearer " + token) {
+    console.error("[blogs] Auth failed — token mismatch. Received header:", authHeader ? "(present but wrong)" : "(missing)");
     return new Response("Unauthorized", { status: 401 });
   }
+
+  console.log("[blogs] Auth OK");
 
   // ── Step 2: Parse body ───────────────────────────────────────────
   var body;
   try {
     body = await req.json();
-  } catch {
+  } catch (err) {
+    console.error("[blogs] Failed to parse JSON body:", err.message);
     return new Response("Invalid JSON body", { status: 400 });
   }
 
   if (!body || typeof body !== "object" || Array.isArray(body)) {
+    console.error("[blogs] Body is not a JSON object:", typeof body);
     return new Response("Request body must be a JSON object", { status: 400 });
   }
+
+  console.log("[blogs] Body parsed. Fields received:", Object.keys(body).join(", "));
 
   // ── Step 3: Validate all fields ─────────────────────────────────
   var validationError = validatePostBody(body);
   if (validationError) {
+    console.error("[blogs] Validation failed:", validationError);
     return new Response(validationError, { status: 400 });
   }
 
+  console.log("[blogs] Validation passed");
+
   // ── Step 4: Normalize into the standard post shape ───────────────
   var post = normalizeAgentPost(body);
+  console.log("[blogs] Normalized post — id:", post.id, "| publishedAt:", post.publishedAt, "| published:", post.published, "| dryRun:", post.dryRun);
 
   // ── Step 5: Read existing posts from GitHub, merge, write back ───
-  // readPostsFromGitHub returns the current SHA alongside the posts array.
-  // The SHA is required by GitHub's Contents API to update (not create) the file.
+  console.log("[blogs] Reading posts from GitHub...");
   var { posts: existing, sha } = await readPostsFromGitHub();
-  var merged                   = mergePosts(existing, post);
+  console.log("[blogs] GitHub read OK — existing posts:", existing.length, "| sha:", sha ?? "(none — new file)");
+
+  var merged = mergePosts(existing, post);
+  console.log("[blogs] Merged — total posts:", merged.length);
+
+  console.log("[blogs] Writing posts to GitHub...");
   await writePostsToGitHub(merged, sha);
+  console.log("[blogs] GitHub write OK");
 
   // LEGACY (Netlify Blobs — revert by uncommenting and removing the lines above):
   // var existing = await readPosts();
   // var merged   = mergePosts(existing, post);
   // await writePosts(merged);
 
-  console.log('[blogs] Ingested post "' + post.title + '" (id: ' + post.id + '). Total posts: ' + merged.length);
+  console.log('[blogs] Done. Ingested post "' + post.title + '" (id: ' + post.id + ')');
 
   return new Response(JSON.stringify(post), {
     status: 200,
@@ -299,8 +313,9 @@ function normalizeAgentPost(raw) {
   var bodyLines   = raw.body.filter(function (p) { return typeof p === "string" && p.trim(); });
   var fullText    = bodyLines.join(" ");
 
-  var publishedAt = raw.publishedAt
-    ? new Date(raw.publishedAt).toISOString()
+  var parsedDate  = raw.publishedAt ? new Date(raw.publishedAt) : null;
+  var publishedAt = (parsedDate && !isNaN(parsedDate.getTime()))
+    ? parsedDate.toISOString()
     : new Date().toISOString();
 
   // Generate a stable, human-readable id from the title and date.
