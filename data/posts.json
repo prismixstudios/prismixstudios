@@ -1,0 +1,26 @@
+[
+  {
+    "id": "prismix-website-connection-test-2026-05-26",
+    "title": "Prismix website connection test",
+    "excerpt": "This is a dry-run validation request from the Prismix LinkedIn Agent dashboard. If your website API supports dryRun, do not create or publish a post.",
+    "body": [
+      "This is a dry-run validation request from the Prismix LinkedIn Agent dashboard. If your website API supports dryRun, do not create or publish a post."
+    ],
+    "publishedAt": "2026-05-26T07:06:05.512Z",
+    "image": null,
+    "source": "website-agent",
+    "sourceId": null,
+    "linkedinUrl": null,
+    "author": {
+      "name": "Prismix Studios",
+      "role": "AI Blog Agent",
+      "initials": "PS"
+    },
+    "readMinutes": 1,
+    "category": "Prismix Journal",
+    "pullQuote": "This is a dry-run validation request from the Prismix LinkedIn Agent dashboard",
+    "tags": [],
+    "published": true,
+    "dryRun": true
+  }
+]
