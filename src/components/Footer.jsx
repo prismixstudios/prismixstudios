@@ -4,23 +4,23 @@ import { FaXTwitter } from "react-icons/fa6";
 
 const Footer = () => {
   return (
-    <footer className="bg-black text-white h-20 flex items-center">
-      <div className="w-full max-w-screen-xl mx-auto flex justify-center items-center gap-10 px-4 sm:gap-20 sm:px-20">
+    <footer className="site-footer">
+      <div className="site-footer-inner">
         {/* Logo Section */}
-        <div>
+        <div className="site-footer-logo-wrap">
           <img
             src="/logo.png"
             alt="Logo"
-            className="h-20 w-auto object-contain"
+            className="site-footer-logo"
           />
         </div>
         {/* Social Links Section */}
-        <div className="flex items-center space-x-4">
+        <div className="site-footer-socials">
           <a
             href="https://www.instagram.com/prismixstudios/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-white text-xl hover:text-pink-500 transition duration-300"
+            className="site-footer-social site-footer-social-instagram"
           >
             <FaInstagram />
           </a>
@@ -28,7 +28,7 @@ const Footer = () => {
             href="https://x.com/PrismixStudios"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-white text-xl hover:text-blue-400 transition duration-300"
+            className="site-footer-social site-footer-social-twitter"
           >
             <FaXTwitter />
           </a>
@@ -36,13 +36,13 @@ const Footer = () => {
             href="https://www.youtube.com/@prismixstudios"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-white text-xl hover:text-red-500 transition duration-300"
+            className="site-footer-social site-footer-social-youtube"
           >
             <FaYoutube />
           </a>
           <a
             href="mailto:Contact@prismixstudios.com"
-            className="text-white text-xl hover:text-green-400 transition duration-300"
+            className="site-footer-social site-footer-social-email"
           >
             <FaEnvelope />
           </a>
@@ -50,7 +50,7 @@ const Footer = () => {
             href="https://www.linkedin.com/company/prismixstudios/posts/?feedView=all"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-white text-xl hover:text-blue-400 transition duration-300"
+            className="site-footer-social site-footer-social-linkedin"
           >
             <FaLinkedin />
           </a>

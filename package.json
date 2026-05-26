@@ -5,14 +5,16 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "serve": "concurrently --kill-others \"npm run dev\" \"npm run functions:dev\"",
+    "functions:dev": "node --env-file=.env scripts/dev-functions.mjs",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "start": "vite preview"
   },
   "dependencies": {
-    "20": "^3.1.9",
     "@emailjs/browser": "^4.4.1",
+    "@netlify/blobs": "^8.1.0",
     "@tailwindcss/vite": "^4.0.13",
     "axios": "^1.8.3",
     "framer-motion": "^12.5.0",
@@ -23,7 +25,7 @@
     "react-router-dom": "^7.3.0",
     "react-slick": "^0.30.3",
     "slick-carousel": "^1.8.1",
-    "swiper": "^11.2.5"
+    "swiper": "^12.1.4"
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",
@@ -31,10 +33,13 @@
     "@types/react-dom": "^19.0.4",
     "@vitejs/plugin-react": "^4.3.4",
     "autoprefixer": "^10.4.21",
+    "concurrently": "^9.2.1",
     "eslint": "^9.21.0",
+    "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^5.1.0",
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^15.15.0",
+    "netlify-cli": "23.12.0",
     "postcss": "^8.5.3",
     "tailwindcss": "^4.0.13",
     "vite": "^6.2.1"

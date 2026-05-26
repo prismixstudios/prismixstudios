@@ -1,0 +1,32 @@
+# ── Build ─────────────────────────────────────────────────────────
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# ── Local dev ─────────────────────────────────────────────────────
+# Explicitly configure dev so the CLI doesn't auto-detect Vite AND
+# also run npm run dev, which causes a double-start / port conflict.
+[dev]
+  command     = "npm run dev"
+  targetPort  = 5173
+  port        = 8888
+
+# ── Functions ─────────────────────────────────────────────────────
+[functions]
+  directory    = "netlify/functions"
+  node_bundler = "esbuild"
+
+# ── Redirects ─────────────────────────────────────────────────────
+# IMPORTANT: /api/blogs must appear BEFORE the SPA catch-all,
+# otherwise /* swallows it and the function is never invoked.
+
+[[redirects]]
+  from   = "/api/blogs"
+  to     = "/.netlify/functions/blogs"
+  status = 200
+  force  = true
+
+[[redirects]]
+  from   = "/*"
+  to     = "/index.html"
+  status = 200

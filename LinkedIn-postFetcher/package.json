@@ -1,0 +1,10 @@
+{
+  "name": "linkedin-post-fetcher",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Netlify Functions: scheduled LinkedIn sync + cached read endpoint",
+  "dependencies": {
+    "@netlify/blobs": "^8.1.0"
+  }
+}

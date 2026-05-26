@@ -4,18 +4,22 @@ import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import WhatWeDo from "./pages/WhatWeDo";
+import Blogs from "./pages/Blogs";
 import Contact from "./pages/Contact";
 
 function App() {
   return (
     <Router>
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/whatwedo" element={<WhatWeDo />} />
-        <Route path="/contact" element={<Contact />} />
-      </Routes>
+      <main className="site-page-shell">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/whatwedo" element={<WhatWeDo />} />
+          <Route path="/blogs" element={<Blogs />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+      </main>
       <Footer />
     </Router>
   );
