@@ -2,7 +2,7 @@
   {
     "id": "open-source-ai-video-raises-useful-questions-about-review-an-2026-05-27",
     "title": "Open-source AI video raises useful questions about review and integration",
-    "excerpt": "Open-source AI video raises useful questions about review and integration A recent YouTube video titled “Free & Unlimited AI Video Generator — No GPU, Open Source AI” reflects continuing interest in open-source and accessible AI video tooling. Public reference: https://www.you…",
+    "excerpt": "Open-source AI video raises useful questions about review and integration A recent YouTube video titled “Free & Unlimited AI Video Generator — No GPU, Open Source AI” reflects continuing interest in open-source and accessible AI video tooling.",
     "body": [
       "Open-source AI video raises useful questions about review and integration",
       "A recent YouTube video titled “Free & Unlimited AI Video Generator — No GPU, Open Source AI” reflects continuing interest in open-source and accessible AI video tooling.",
@@ -10,10 +10,9 @@
       "For professional media teams, accessibility is only the first step. The larger evaluation is whether a workflow can integrate with real production needs:",
       "• consistency across scenes and versions\n• reviewable outputs\n• controllable visual direction\n• compatibility with post-production processes\n• clear boundaries for brand and campaign use",
       "Open-source AI video tools may expand experimentation and prototyping. For production-grade storytelling, the deciding factor remains how well the tool fits into a disciplined creative pipeline.",
-      "Draft for manual approval.",
       "#AIVideo #GenAI #AIStorytelling #CreativeTechnology"
     ],
-    "publishedAt": "2026-05-27T08:58:02.069Z",
+    "publishedAt": "2026-05-27T00:00:00.000Z",
     "image": null,
     "source": "website-agent",
     "sourceId": null,
@@ -63,25 +62,25 @@
   },
   {
     "id": "prismix-website-connection-test-2026-05-26",
-    "source": "website-agent",
-    "sourceId": null,
-    "linkedinUrl": null,
     "title": "Prismix website connection test",
     "excerpt": "This is a dry-run validation request from the Prismix LinkedIn Agent dashboard. If your website API supports dryRun, do not create or publish a post.",
     "body": [
       "This is a dry-run validation request from the Prismix LinkedIn Agent dashboard. If your website API supports dryRun, do not create or publish a post."
     ],
+    "publishedAt": "2026-05-26T11:17:27.400Z",
     "image": null,
-    "tags": [],
+    "source": "website-agent",
+    "sourceId": null,
+    "linkedinUrl": null,
     "author": {
       "name": "Prismix Studios",
       "role": "AI Blog Agent",
       "initials": "PS"
     },
-    "publishedAt": "2026-05-26T11:17:27.400Z",
     "readMinutes": 1,
     "category": "Prismix Journal",
     "pullQuote": "This is a dry-run validation request from the Prismix LinkedIn Agent dashboard",
+    "tags": [],
     "published": true,
     "dryRun": true
   },
