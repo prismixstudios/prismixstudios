@@ -1,8 +1,95 @@
 [
   {
-    "id": "videogenx-bootcamp",
-    "title": "VideoGenX — India's first AI filmmaking bootcamp.",
-    "excerpt": "Hands-on, intensive, and built for the next generation of Indian filmmakers. VideoGenX teaches you to make cinema with the tools of tomorrow.",
+    "id": "prismix-website-connection-test-2026-05-26",
+    "source": "website-agent",
+    "sourceId": null,
+    "linkedinUrl": null,
+    "title": "Prismix website connection test",
+    "excerpt": "This is a dry-run validation request from the Prismix LinkedIn Agent dashboard. If your website API supports dryRun, do not create or publish a post.",
+    "body": [
+      "This is a dry-run validation request from the Prismix LinkedIn Agent dashboard. If your website API supports dryRun, do not create or publish a post."
+    ],
+    "image": null,
+    "tags": [],
+    "author": {
+      "name": "Prismix Studios",
+      "role": "AI Blog Agent",
+      "initials": "PS"
+    },
+    "publishedAt": "2026-05-26T11:17:27.400Z",
+    "readMinutes": 1,
+    "category": "Prismix Journal",
+    "pullQuote": "This is a dry-run validation request from the Prismix LinkedIn Agent dashboard",
+    "published": true,
+    "dryRun": true
+  },
+  {
+    "id": "all-in-one-ai-creator-suites-should-be-evaluated-through-bra-2026-05-26",
+    "title": "All-in-one AI creator suites should be evaluated through brand governance",
+    "excerpt": "All-in-one AI creator suites should be evaluated through brand governance A recent YouTube review of PicLumen AI points to a wider trend: AI creator platforms are increasingly presenting themselves as all-in-one environments for content makers. Public reference: https://www.yo…",
+    "body": [
+      "All-in-one AI creator suites should be evaluated through brand governance",
+      "A recent YouTube review of PicLumen AI points to a wider trend: AI creator platforms are increasingly presenting themselves as all-in-one environments for content makers.",
+      "Public reference: https://www.youtube.com/watch?v=j7aNwDvsJhY",
+      "For professional teams, the key evaluation is not only feature breadth. It is whether a tool can support repeatable creative standards:",
+      "• visual consistency across formats\n• clear asset review paths\n• brand-safe outputs\n• adaptation for campaigns, languages, and regions\n• reliable handoff into post-production or publishing workflows",
+      "As AI creator suites expand, the strongest production conversations will likely be about governance, not just generation.",
+      "Draft for manual approval.",
+      "#CreativeTechnology #GenAI #AIWorkflows #ProductionAI"
+    ],
+    "publishedAt": "2026-05-26T11:10:49.808Z",
+    "image": null,
+    "source": "website-agent",
+    "sourceId": null,
+    "linkedinUrl": null,
+    "author": {
+      "name": "Prismix Studios",
+      "role": "AI Blog Agent",
+      "initials": "PS"
+    },
+    "readMinutes": 1,
+    "category": "Prismix Journal",
+    "pullQuote": "All-in-one AI creator suites should be evaluated through brand governance A recent YouTube review of PicLumen AI points to a wider trend: AI creator platforms are increasingly presenting themselves as",
+    "tags": [],
+    "published": true,
+    "dryRun": false
+  },
+  {
+    "id": "one-prompt-video-tools-still-need-editorial-decision-making-2026-05-26",
+    "title": "One-prompt video tools still need editorial decision-making",
+    "excerpt": "One-prompt video tools still need editorial decision-making A recent YouTube video titled “This AI Made My Entire Video” highlights a direction many creator tools are exploring: one prompt moving into script, voice, editing, and cinematic scene generation. Public reference: ht…",
+    "body": [
+      "One-prompt video tools still need editorial decision-making",
+      "A recent YouTube video titled “This AI Made My Entire Video” highlights a direction many creator tools are exploring: one prompt moving into script, voice, editing, and cinematic scene generation.",
+      "Public reference: https://www.youtube.com/watch?v=4ByaKppfknM",
+      "This is useful to watch — not because one prompt replaces production thinking, but because it shows how quickly the interface around content creation is being compressed.",
+      "For professional content, the important layer remains editorial judgment:",
+      "• What is the story actually trying to communicate?\n• Does the visual language match the brand or audience?\n• Are voice, pacing, and scene design consistent?\n• Where does human review enter the workflow?",
+      "For GenAI-led storytelling, speed is valuable only when paired with direction, continuity, and production discipline.",
+      "Draft for manual approval.",
+      "#AIVideo #GenAI #AIStorytelling #ProductionAI"
+    ],
+    "publishedAt": "2026-05-26T10:51:54.144Z",
+    "image": null,
+    "source": "website-agent",
+    "sourceId": null,
+    "linkedinUrl": null,
+    "author": {
+      "name": "Prismix Studios",
+      "role": "AI Blog Agent",
+      "initials": "PS"
+    },
+    "readMinutes": 1,
+    "category": "Prismix Journal",
+    "pullQuote": "One-prompt video tools still need editorial decision-making A recent YouTube video titled “This AI Made My Entire Video” highlights a direction many creator tools are exploring: one prompt moving into",
+    "tags": [],
+    "published": true,
+    "dryRun": false
+  },
+  {
+    "id": "ai-video-editing-tools-are-moving-toward-structured-creative-2026-05-26",
+    "title": "AI video editing tools are moving toward structured creative systems",
+    "excerpt": "AI video editing tools are moving toward structured creative systems The next stage of AI video may be less about single prompts and more about structured creative systems. A recent video on Google Flow’s Tool Builder points to this shift: AI video workflows are beginning to l…",
     "body": [
       "Prismix Studios is proud to introduce VideoGenX — India's first AI filmmaking bootcamp, designed for filmmakers, storytellers, and creators who want to master the next generation of cinematic tools.",
       "Over three intensive days, participants work hands-on with the most powerful generative AI platforms in production today — from script generation and storyboarding to AI-driven visual effects and post-production workflows. Each session is led by industry practitioners who have used these tools on real productions.",
