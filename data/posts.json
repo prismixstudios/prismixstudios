@@ -1,40 +1,5 @@
 [
   {
-    "id": "how-generative-ai-is-changing-the-way-studios-build-stories-2026-05-28",
-    "title": "How Generative AI Is Changing the Way Studios Build Stories",
-    "excerpt": "Generative AI is not replacing storytelling. It is changing how fast teams can explore ideas, test visual worlds, and move from concept to screen.",
-    "body": [
-      "## A new creative workflow",
-      "For years, filmmaking has moved through a familiar pipeline: idea, script, concept art, production, edit, and final delivery. That process still matters, but generative AI is making the early stages dramatically faster.",
-      "Today, a studio can explore multiple story directions, visual styles, character looks, and scene moods before a traditional production process even begins.",
-      "## From blank page to visual direction",
-      "The biggest advantage is speed of exploration. A rough idea can quickly become a moodboard, a character sheet, a sample shot, or even a short animatic.",
-      "This does not remove the need for writers, directors, designers, or editors. Instead, it gives them a faster way to test their thinking.",
-      "## Why this matters for brands and studios",
-      "For brands, this means more cinematic content can be developed at a lower entry cost. For studios, it means internal teams can experiment more freely before committing time and budget.",
-      "The best results still come from strong creative direction. AI is powerful, but it needs taste, structure, and a clear point of view.",
-      "## The Prismix approach",
-      "At Prismix Studios, we see AI as a creative engine, not a shortcut. The goal is not to generate random content. The goal is to build scalable storytelling systems that combine cinematic craft, design thinking, and new technology.",
-      "The future belongs to teams that can move fast without losing emotion, quality, or intent."
-    ],
-    "publishedAt": "2026-05-28T00:00:00.000Z",
-    "image": "https://images.unsplash.com/photo-1639322537228-f710d846310a",
-    "source": "admin-app",
-    "sourceId": null,
-    "linkedinUrl": null,
-    "author": {
-      "name": "Bhoumish Grover",
-      "role": "Nothing",
-      "initials": "BG"
-    },
-    "readMinutes": 1,
-    "category": "Studio",
-    "pullQuote": "AI is powerful, but it needs taste, structure, and a clear point of view.",
-    "tags": [],
-    "published": true,
-    "dryRun": false
-  },
-  {
     "id": "open-source-ai-video-raises-useful-questions-about-review-an-2026-05-27",
     "title": "Open-source AI video raises useful questions about review and integration",
     "excerpt": "Open-source AI video raises useful questions about review and integration A recent YouTube video titled “Free & Unlimited AI Video Generator — No GPU, Open Source AI” reflects continuing interest in open-source and accessible AI video tooling.",
