@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
 import { getBlogPosts } from "../services/blogService";
 
@@ -128,6 +128,7 @@ function Tags({ tags, style }) {
 /* ── Featured post ───────────────────────────────────── */
 function FeaturedPost({ post, index }) {
   const hasImage = !!post.image;
+  const [floatSide] = useState(() => Math.random() < 0.5 ? "left" : "right");
 
   return (
     <motion.article
@@ -139,11 +140,18 @@ function FeaturedPost({ post, index }) {
     >
       {hasImage ? (
         <div className="bp-expanded-layout">
-          <div className="bp-card-cover">
+          <div
+            className="bp-card-cover bp-float-cover"
+            style={{
+              float: floatSide,
+              marginRight: floatSide === "left" ? 36 : 0,
+              marginLeft: floatSide === "right" ? 36 : 0,
+            }}
+          >
             <img
               src={post.image}
               alt={post.title}
-              style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
+              style={{ width: "100%", height: "auto", display: "block" }}
             />
             <div className="bp-pill" style={{ position: "absolute", left: 12, top: 12, zIndex: 2 }}>
               <span className="bp-pill-dot" />
@@ -151,18 +159,16 @@ function FeaturedPost({ post, index }) {
             </div>
           </div>
           <div className="bp-expanded-body">
-            <div>
-              <div className="bp-card-meta">
-                <span>{isoStamp(post.publishedAt)}</span>
-                <span className="bp-dotsep" />
-                <span>{post.readMinutes} min</span>
-                <span className="bp-dotsep" />
-                <span>Featured {String(index + 1).padStart(2, "0")}</span>
-              </div>
-              <h4>{post.title}</h4>
-              <div className="bp-expanded-full-body" style={{ marginTop: 18 }}>
-                {(post.body ?? []).map((p, i, arr) => renderRichParagraph(p, i, i === arr.length - 1))}
-              </div>
+            <div className="bp-card-meta">
+              <span>{isoStamp(post.publishedAt)}</span>
+              <span className="bp-dotsep" />
+              <span>{post.readMinutes} min</span>
+              <span className="bp-dotsep" />
+              <span>Featured {String(index + 1).padStart(2, "0")}</span>
+            </div>
+            <h4>{post.title}</h4>
+            <div className="bp-expanded-full-body" style={{ marginTop: 18 }}>
+              {(post.body ?? []).map((p, i, arr) => renderRichParagraph(p, i, i === arr.length - 1))}
             </div>
             <div style={{ marginTop: 24 }}>
               <Tags tags={(post.tags ?? []).slice(0, 3)} style={{ gap: 6 }} />
@@ -255,22 +261,42 @@ function FeaturedPost({ post, index }) {
 /* ── Archive card ─────────────────────────────────────── */
 function ArchiveCard({ post, index, expanded, onToggle }) {
   const hasImage = !!post.image;
+  const [floatSide] = useState(() => Math.random() < 0.5 ? "left" : "right");
+  const cardRef = useRef(null);
+
+  const prevExpanded = useRef(null);
+  useEffect(() => {
+    const prev = prevExpanded.current;
+    prevExpanded.current = expanded;
+    if (prev === null || !cardRef.current) return; // skip initial mount
+    if (!prev && expanded) {
+      const t = setTimeout(() => cardRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }), 80);
+      return () => clearTimeout(t);
+    }
+    if (prev && !expanded) {
+      const t = setTimeout(() => cardRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" }), 480);
+      return () => clearTimeout(t);
+    }
+  }, [expanded]);
 
   return (
     <motion.article
+      ref={cardRef}
       className={`bp-card${expanded ? " bp-expanded" : ""}`}
       layout
-      transition={{ layout: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] } }}
+      transition={{ layout: { duration: 0.45, ease: [0.25, 0.46, 0.45, 0.94] }, y: { duration: 0.4, ease: [0.2, 0.7, 0.2, 1] } }}
       onClick={!expanded ? onToggle : undefined}
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
+      whileHover={!expanded ? { y: -4 } : undefined}
       style={{ cursor: expanded ? "default" : "pointer" }}
     >
-      <AnimatePresence mode="wait" initial={false}>
+      <AnimatePresence mode="popLayout" initial={false}>
         {expanded ? (
           <motion.div
             key="expanded"
+            layout
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -285,11 +311,18 @@ function ArchiveCard({ post, index, expanded, onToggle }) {
 
             {hasImage ? (
               <div className="bp-expanded-layout">
-                <div className="bp-card-cover">
+                <div
+                  className="bp-card-cover bp-float-cover"
+                  style={{
+                    float: floatSide,
+                    marginRight: floatSide === "left" ? 36 : 0,
+                    marginLeft: floatSide === "right" ? 36 : 0,
+                  }}
+                >
                   <img
                     src={post.image}
                     alt={post.title}
-                    style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
+                    style={{ width: "100%", height: "auto", display: "block" }}
                   />
                   <div className="bp-pill" style={{ position: "absolute", left: 12, top: 12, zIndex: 2 }}>
                     <span className="bp-pill-dot" />
@@ -297,18 +330,16 @@ function ArchiveCard({ post, index, expanded, onToggle }) {
                   </div>
                 </div>
                 <div className="bp-expanded-body">
-                  <div>
-                    <div className="bp-card-meta">
-                      <span>{isoStamp(post.publishedAt)}</span>
-                      <span className="bp-dotsep" />
-                      <span>{post.readMinutes} min</span>
-                      <span className="bp-dotsep" />
-                      <span>Prismix Journal</span>
-                    </div>
-                    <h4>{post.title}</h4>
-                    <div className="bp-expanded-full-body" style={{ marginTop: 18 }}>
-                      {(post.body ?? []).map((p, i, arr) => renderRichParagraph(p, i, i === arr.length - 1))}
-                    </div>
+                  <div className="bp-card-meta">
+                    <span>{isoStamp(post.publishedAt)}</span>
+                    <span className="bp-dotsep" />
+                    <span>{post.readMinutes} min</span>
+                    <span className="bp-dotsep" />
+                    <span>Prismix Journal</span>
+                  </div>
+                  <h4>{post.title}</h4>
+                  <div className="bp-expanded-full-body" style={{ marginTop: 18 }}>
+                    {(post.body ?? []).map((p, i, arr) => renderRichParagraph(p, i, i === arr.length - 1))}
                   </div>
                   <div style={{ marginTop: 24 }}>
                     <Tags tags={(post.tags ?? []).slice(0, 3)} style={{ gap: 6 }} />
@@ -337,6 +368,7 @@ function ArchiveCard({ post, index, expanded, onToggle }) {
         ) : (
           <motion.div
             key="collapsed"
+            layout
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -420,7 +452,7 @@ const Blogs = () => {
         {/* ── Hero ── */}
         <section className="bp-hero-section" style={{ padding: "120px 0 28px", position: "relative", minHeight: "100vh" }}>
           <div className="bp-hero-image" aria-hidden="true">
-            <img src="/blogs-bg-1.png" alt="" />
+            <img src="/blogs-bg-1-compressed.png" alt="background image for blogs page" />
           </div>
           <div style={{ maxWidth: 1320, margin: "0 auto", padding: "0 40px", minHeight: "calc(100vh - 280px)", display: "flex", flexDirection: "column" }}>
             <span className="bp-pill">

@@ -602,20 +602,20 @@ body {
 
 /* — Archive card — */
 .bp-card {
-  position: relative; overflow: hidden; border-radius: 4px;
+  position: relative; overflow: clip; border-radius: 4px;
   border: 1px solid var(--bp-line);
   background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.01));
-  transition: transform .4s cubic-bezier(.2,.7,.2,1), border-color .3s, box-shadow .3s;
+  transition: border-color .3s, box-shadow .3s;
   cursor: pointer; display: flex; flex-direction: column;
 }
 .bp-card:not(.bp-expanded):hover {
-  transform: translateY(-4px); border-color: var(--bp-line-2);
+  border-color: var(--bp-line-2);
   box-shadow: 0 30px 60px -30px rgba(120,80,255,0.35), 0 0 0 1px rgba(255,255,255,0.04) inset;
 }
 .bp-card.bp-expanded { cursor: default; grid-column: 1 / -1; }
 .bp-featured-open-card { margin: 34px 0; }
 .bp-card-cover { position: relative; aspect-ratio: 16/10; }
-.bp-card.bp-expanded .bp-card-cover { aspect-ratio: auto; min-height: 460px; }
+.bp-card.bp-expanded .bp-card-cover:not(.bp-float-cover) { aspect-ratio: auto; }
 .bp-card .bp-card-meta {
   display: flex; gap: 12px; align-items: center; color: var(--bp-ink-2);
   font-family: 'JetBrains Mono', monospace; font-size: 14px;
@@ -638,12 +638,17 @@ body {
 
 /* — Expanded card layouts — */
 .bp-expanded-layout {
-  display: grid; grid-template-columns: 1.1fr 1fr; gap: 0;
-}
-.bp-expanded-body {
+  display: flow-root;
   padding: 48px 48px 44px;
-  display: flex; flex-direction: column; justify-content: space-between;
 }
+.bp-float-cover {
+  width: 42%;
+  aspect-ratio: auto;
+  overflow: hidden;
+  border-radius: 3px;
+  margin-bottom: 16px;
+}
+.bp-expanded-body { /* natural flow — no padding, parent handles it */ }
 .bp-card.bp-expanded h4 {
   font-size: 38px; font-weight: 700; line-height: 1.05; letter-spacing: -0.02em;
   margin-top: 14px;
@@ -661,9 +666,8 @@ body {
 }
 .bp-close-btn:hover { background: rgba(0,0,0,0.85); transform: rotate(90deg); }
 @media (max-width: 900px) {
-  .bp-expanded-layout { grid-template-columns: 1fr; }
-  .bp-card.bp-expanded .bp-card-cover { min-height: 280px; }
-  .bp-expanded-body { padding: 28px; }
+  .bp-float-cover { width: 50%; }
+  .bp-expanded-layout { padding: 32px; }
   .bp-card.bp-expanded h4 { font-size: 28px; }
 }
 
@@ -738,5 +742,7 @@ body {
 @media (max-width: 640px) {
   .bp-archive-grid { grid-template-columns: 1fr !important; }
   .blogs-page section { padding-left: 22px !important; padding-right: 22px !important; }
+  .bp-float-cover { float: none !important; width: 100% !important; margin-left: 0 !important; margin-right: 0 !important; }
+  .bp-expanded-layout { padding: 24px 20px; }
 }
 
