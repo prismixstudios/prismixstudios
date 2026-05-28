@@ -183,35 +183,6 @@
     "dryRun": false
   },
   {
-    "id": "ajay-devgn-launch",
-    "title": "Ajay Devgn launches generative AI storytelling venture Prismix.",
-    "excerpt": "Variety covered our exclusive launch — a studio built to redefine storytelling across film, digital, and branded content.",
-    "body": [
-      "In early 2025, Variety magazine published an exclusive feature on Ajay Devgn's entry into the generative AI space with the launch of Prismix Studios — a venture that has been in development for over two years.",
-      "Prismix was born from a question: what happens when you give the best storytellers in the world access to tools that have no creative limits? The answer, we believe, is a new kind of cinema — one that is faster, more expressive, and more accessible than anything that has come before."
-    ],
-    "publishedAt": "2025-01-20T00:00:00.000Z",
-    "image": "/news3.png",
-    "source": "website-agent",
-    "sourceId": null,
-    "linkedinUrl": null,
-    "author": {
-      "name": "Danish Devgn",
-      "role": "Co-Founder & CBO",
-      "initials": "DD"
-    },
-    "readMinutes": 4,
-    "category": "Studio",
-    "pullQuote": "What happens when you give the best storytellers in the world access to tools that have no creative limits?",
-    "tags": [
-      "Launch",
-      "GenerativeAI",
-      "Entertainment"
-    ],
-    "published": true,
-    "dryRun": false
-  },
-  {
     "id": "being-human",
     "title": "Being Human x Prismix: AI meets purpose-driven storytelling.",
     "excerpt": "Collaborating with Being Human showed us what happens when brand purpose and generative AI intersect — authenticity at scale.",
