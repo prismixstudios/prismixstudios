@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Prismix Studios</title>
+  <link rel="icon" href="/logo-browser.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #050507;
+      --surface:  rgba(255,255,255,0.035);
+      --border:   rgba(255,255,255,0.08);
+      --border-2: rgba(255,255,255,0.14);
+      --grad:     linear-gradient(120deg, oklch(0.68 0.18 250), oklch(0.66 0.22 305) 55%, oklch(0.72 0.20 355));
+      --ink-0:    #f6f6f8;
+      --ink-1:    #d6d6dc;
+      --ink-2:    #9a9aa6;
+      --ink-3:    #61616d;
+      --max:      780px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink-0);
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.75;
+      font-weight: 400;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Header ── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      height: 106px;
+      background: rgba(0, 0, 0, 0.9);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 16px 42px rgba(0, 0, 0, 0.36);
+      backdrop-filter: blur(18px) saturate(150%);
+      -webkit-backdrop-filter: blur(18px) saturate(150%);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .logo img {
+      height: 84px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    .back-link {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px;
+      letter-spacing: 0.08em;
+      color: var(--ink-1);
+      text-decoration: none;
+      transition: opacity 0.25s ease;
+    }
+    .back-link:hover { opacity: 0.7; }
+
+    /* ── Main ── */
+    main {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 72px 40px 100px;
+      animation: fadeUp 0.45s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Hero ── */
+    .hero {
+      margin-bottom: 64px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 13px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--ink-2);
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(40px, 6vw, 72px);
+      font-weight: 400;
+      line-height: 1.0;
+      letter-spacing: 0.06em;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 20px;
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 0;
+      font-size: 0.82rem;
+      color: var(--ink-2);
+      flex-wrap: wrap;
+      font-family: Arial, sans-serif;
+      letter-spacing: 0.04em;
+    }
+
+    .hero-meta span {
+      white-space: nowrap;
+    }
+
+    .hero-meta span + span::before {
+      content: ' · ';
+      margin: 0 8px;
+      color: var(--ink-3);
+    }
+
+    /* ── Table of Contents ── */
+    .toc {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 2px solid;
+      border-image: var(--grad) 1;
+      padding: 28px 32px;
+      margin-bottom: 56px;
+    }
+
+    .toc-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 13px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--ink-2);
+      margin-bottom: 14px;
+    }
+
+    .toc ol {
+      padding-left: 18px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px 32px;
+    }
+
+    .toc li { font-size: 0.88rem; color: var(--ink-2); }
+
+    .toc a {
+      color: var(--ink-2);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .toc a:hover { color: var(--ink-0); }
+
+    /* ── Sections ── */
+    section {
+      margin-bottom: 52px;
+    }
+
+    h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(22px, 3vw, 32px);
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      color: var(--ink-0);
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+    }
+
+    h2 .num {
+      font-family: Arial, sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      color: var(--ink-3);
+      font-weight: 400;
+    }
+
+    p { margin-bottom: 14px; color: var(--ink-1); font-size: 15px; }
+    p:last-child { margin-bottom: 0; }
+
+    ul, ol {
+      padding-left: 20px;
+      margin-bottom: 14px;
+      color: var(--ink-1);
+      font-size: 15px;
+    }
+
+    li { margin-bottom: 6px; }
+
+    strong { color: var(--ink-0); font-weight: 600; }
+
+    a { color: #6aa0ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Callout box ── */
+    .callout {
+      border: 1px solid var(--border-2);
+      border-left: 2px solid;
+      border-image: var(--grad) 1;
+      padding: 18px 22px;
+      margin: 24px 0;
+      font-size: 0.9rem;
+      color: var(--ink-2);
+      background: rgba(160,120,255,0.04);
+    }
+
+    /* ── Contact card ── */
+    .contact-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 28px 32px;
+      margin-top: 20px;
+    }
+    .contact-card p { margin-bottom: 8px; }
+
+    /* ── Footer ── */
+    footer {
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 -16px 42px rgba(0, 0, 0, 0.36);
+      background: rgba(0, 0, 0, 0.9);
+      backdrop-filter: blur(18px) saturate(150%);
+      -webkit-backdrop-filter: blur(18px) saturate(150%);
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--ink-3);
+      letter-spacing: 0.06em;
+    }
+
+    footer a { color: var(--ink-3); text-decoration: none; }
+    footer a:hover { color: var(--ink-1); }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      header { height: 96px; padding: 0 22px; }
+      .logo img { height: 70px; }
+      main { padding: 48px 22px 80px; }
+      .toc ol { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a class="logo" href="/">
+      <img src="/logo.png" alt="Prismix Studios" />
+    </a>
+    <a class="back-link" href="/">← Back to site</a>
+  </header>
+
+  <main>
+    <div class="hero">
+      <span class="eyebrow">Legal</span>
+      <h1>Privacy Policy</h1>
+      <div class="hero-meta">
+        <span>Effective Date: June 1, 2025</span>
+        <span>Last Updated: May 28, 2026</span>
+        <span>Prismix Studios</span>
+      </div>
+    </div>
+
+    <nav class="toc">
+      <div class="toc-title">Contents</div>
+      <ol>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#data-collected">Information We Collect</a></li>
+        <li><a href="#linkedin-data">LinkedIn Data</a></li>
+        <li><a href="#how-we-use">How We Use Information</a></li>
+        <li><a href="#sharing">Sharing &amp; Disclosure</a></li>
+        <li><a href="#retention">Data Retention</a></li>
+        <li><a href="#security">Security</a></li>
+        <li><a href="#rights">Your Rights</a></li>
+        <li><a href="#third-party">Third-Party Links</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ol>
+    </nav>
+
+    <section id="overview">
+      <h2><span class="num">01</span> Overview</h2>
+      <p>Prismix Studios ("Prismix," "we," "us," or "our") operates as a B2B creative and generative AI media company, providing promotional and entertainment content services to businesses. This Privacy Policy explains how we collect, use, store, and protect information when you visit our website (<a href="https://prismixstudios.com">prismixstudios.com</a>), use our services, or interact with us through third-party platforms such as LinkedIn.</p>
+      <p>By using our services or accessing our website, you agree to the terms described in this Privacy Policy. If you do not agree, please discontinue use of our services.</p>
+      <div class="callout">
+        This policy applies to all services provided by Prismix Studios, including our website, social media integrations, client portals, and any APIs or tools we use to deliver creative media services.
+      </div>
+    </section>
+
+    <section id="data-collected">
+      <h2><span class="num">02</span> Information We Collect</h2>
+      <p>We collect information in the following ways:</p>
+      <p><strong>Information You Provide Directly</strong></p>
+      <ul>
+        <li>Name, business name, and job title</li>
+        <li>Email address and phone number</li>
+        <li>Company details and project requirements shared in briefs or communications</li>
+        <li>Payment and billing information (processed securely by third-party payment providers)</li>
+        <li>Any content, assets, or materials you share with us to fulfill a creative brief</li>
+      </ul>
+      <p><strong>Information Collected Automatically</strong></p>
+      <ul>
+        <li>IP address and approximate geographic location</li>
+        <li>Browser type, device type, and operating system</li>
+        <li>Pages visited, time spent on pages, and referring URLs</li>
+        <li>Cookies and similar tracking technologies (see below)</li>
+      </ul>
+      <p><strong>Cookies &amp; Tracking</strong></p>
+      <p>We use cookies to improve site performance and understand user behavior. You may disable cookies through your browser settings; some site features may not function without them.</p>
+    </section>
+
+    <section id="linkedin-data">
+      <h2><span class="num">03</span> LinkedIn Data</h2>
+      <p>Prismix Studios uses the LinkedIn API to support certain features, including sharing content, accessing public professional profiles, and facilitating B2B outreach in connection with our services. When you authorize our application through LinkedIn, we may collect:</p>
+      <ul>
+        <li>Your LinkedIn profile information (name, headline, profile photo, and public profile URL)</li>
+        <li>Your LinkedIn member ID</li>
+        <li>Email address associated with your LinkedIn account (if permission is granted)</li>
+        <li>Content you authorize us to post or interact with on your behalf</li>
+      </ul>
+      <p><strong>How We Use LinkedIn Data</strong></p>
+      <ul>
+        <li>To enable authorized content publishing or scheduling on LinkedIn</li>
+        <li>To identify and communicate with business contacts for service delivery</li>
+        <li>To personalize proposals or creative deliverables relevant to your business</li>
+      </ul>
+      <p><strong>LinkedIn Data Restrictions</strong></p>
+      <p>We do not sell, rent, or share LinkedIn member data with any third party except as required to deliver our services or as required by law. We use LinkedIn data strictly in accordance with <a href="https://www.linkedin.com/legal/l/api-terms-of-use" target="_blank" rel="noopener">LinkedIn's API Terms of Use</a> and applicable data protection regulations.</p>
+      <p>You may revoke Prismix Studios' access to your LinkedIn data at any time by visiting your <a href="https://www.linkedin.com/psettings/permitted-services" target="_blank" rel="noopener">LinkedIn Permitted Services settings</a>.</p>
+    </section>
+
+    <section id="how-we-use">
+      <h2><span class="num">04</span> How We Use Information</h2>
+      <p>We use the information we collect to:</p>
+      <ul>
+        <li>Deliver and manage creative and generative AI media services contracted by clients</li>
+        <li>Communicate with you about projects, proposals, and updates</li>
+        <li>Process payments and manage billing</li>
+        <li>Improve our website, tools, and service offerings</li>
+        <li>Send relevant marketing communications (you may opt out at any time)</li>
+        <li>Comply with legal obligations and enforce our agreements</li>
+        <li>Prevent fraud and protect the security of our systems</li>
+      </ul>
+      <p>We do not use personal data to train generative AI models without explicit written consent.</p>
+    </section>
+
+    <section id="sharing">
+      <h2><span class="num">05</span> Sharing &amp; Disclosure</h2>
+      <p>Prismix Studios does not sell personal information. We may share information with:</p>
+      <ul>
+        <li><strong>Service Providers:</strong> Trusted vendors who help us operate our business (e.g., cloud hosting, payment processing, analytics) under strict confidentiality agreements.</li>
+        <li><strong>Business Partners:</strong> Only with your consent, where required to deliver contracted services.</li>
+        <li><strong>Legal Authorities:</strong> When required by applicable law, court order, or to protect the rights and safety of Prismix Studios or others.</li>
+        <li><strong>Business Transfers:</strong> In connection with a merger, acquisition, or sale of assets, subject to confidentiality obligations.</li>
+      </ul>
+    </section>
+
+    <section id="retention">
+      <h2><span class="num">06</span> Data Retention</h2>
+      <p>We retain personal information for as long as necessary to fulfill the purposes described in this policy, comply with legal obligations, resolve disputes, and enforce our agreements. When data is no longer required, we securely delete or anonymize it.</p>
+      <p>Client project data is generally retained for a minimum of three (3) years after project completion for business and legal record-keeping purposes, unless a shorter period is required by law or requested by the client.</p>
+    </section>
+
+    <section id="security">
+      <h2><span class="num">07</span> Security</h2>
+      <p>We implement industry-standard technical and organizational measures to protect your information against unauthorized access, disclosure, alteration, or destruction. This includes encrypted data transmission (TLS/HTTPS), access controls, and regular security reviews.</p>
+      <p>No method of transmission or storage is 100% secure. While we strive to protect your data, we cannot guarantee absolute security. In the event of a data breach that affects your rights, we will notify you as required by applicable law.</p>
+    </section>
+
+    <section id="rights">
+      <h2><span class="num">08</span> Your Rights</h2>
+      <p>Depending on your location, you may have the following rights regarding your personal information:</p>
+      <ul>
+        <li><strong>Access:</strong> Request a copy of the personal data we hold about you.</li>
+        <li><strong>Correction:</strong> Request correction of inaccurate or incomplete data.</li>
+        <li><strong>Deletion:</strong> Request deletion of your personal data, subject to legal retention obligations.</li>
+        <li><strong>Objection:</strong> Object to certain uses of your data, including marketing communications.</li>
+        <li><strong>Data Portability:</strong> Request your data in a machine-readable format where applicable.</li>
+        <li><strong>Withdraw Consent:</strong> Where processing is based on consent, you may withdraw it at any time.</li>
+      </ul>
+      <p>To exercise any of these rights, please contact us using the details in the <a href="#contact">Contact</a> section below. We will respond within 30 days.</p>
+    </section>
+
+    <section id="third-party">
+      <h2><span class="num">09</span> Third-Party Links &amp; Services</h2>
+      <p>Our website and communications may contain links to third-party websites or integrate with third-party platforms (including LinkedIn, social media networks, and cloud tools). This Privacy Policy does not apply to those external services. We encourage you to review the privacy policies of any third-party platforms you interact with.</p>
+    </section>
+
+    <section id="contact">
+      <h2><span class="num">10</span> Contact Us</h2>
+      <p>If you have any questions, concerns, or requests regarding this Privacy Policy or how we handle your personal data, please reach out to us:</p>
+      <div class="contact-card">
+        <p><strong>Prismix Studios</strong></p>
+        <p>Website: <a href="https://prismixstudios.com">prismixstudios.com</a></p>
+        <p>Email: <a href="mailto:Contact@prismixstudios.com">Contact@prismixstudios.com</a></p>
+        <p>For LinkedIn-specific data requests, please also revoke application access via your <a href="https://www.linkedin.com/psettings/permitted-services" target="_blank" rel="noopener">LinkedIn account settings</a>.</p>
+      </div>
+      <p style="margin-top: 24px; font-size: 0.85rem; color: var(--ink-3);">We reserve the right to update this Privacy Policy at any time. Changes will be posted on this page with a revised "Last Updated" date. Continued use of our services after changes constitutes acceptance of the updated policy.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Prismix Studios. All rights reserved. &nbsp;&middot;&nbsp; <a href="/">prismixstudios.com</a></p>
+  </footer>
+
+</body>
+</html>
