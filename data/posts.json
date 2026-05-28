@@ -124,36 +124,6 @@
     "dryRun": false
   },
   {
-    "id": "ai-video-editing-tools-are-moving-toward-structured-creative-2026-05-26",
-    "title": "AI video editing tools are moving toward structured creative systems",
-    "excerpt": "AI video editing tools are moving toward structured creative systems The next stage of AI video may be less about single prompts and more about structured creative systems. A recent video on Google Flow’s Tool Builder points to this shift: AI video workflows are beginning to l…",
-    "body": [
-      "Prismix Studios is proud to introduce VideoGenX — India's first AI filmmaking bootcamp, designed for filmmakers, storytellers, and creators who want to master the next generation of cinematic tools.",
-      "Over three intensive days, participants work hands-on with the most powerful generative AI platforms in production today — from script generation and storyboarding to AI-driven visual effects and post-production workflows. Each session is led by industry practitioners who have used these tools on real productions.",
-      "VideoGenX is not a workshop about the future. It is a workshop for people who want to shape it. Whether you are a seasoned director or an aspiring creator, the bootcamp gives you the tools, the language, and the confidence to work with AI as a creative collaborator — not a replacement."
-    ],
-    "publishedAt": "2025-04-10T00:00:00.000Z",
-    "image": "/news1.png",
-    "source": "website-agent",
-    "sourceId": null,
-    "linkedinUrl": null,
-    "author": {
-      "name": "Sahil Nayar",
-      "role": "Co-Founder & CCO",
-      "initials": "SN"
-    },
-    "readMinutes": 6,
-    "category": "Education",
-    "pullQuote": "VideoGenX is not a workshop about the future. It is a workshop for people who want to shape it.",
-    "tags": [
-      "VideoGenX",
-      "AIFilmmaking",
-      "Bootcamp"
-    ],
-    "published": true,
-    "dryRun": false
-  },
-  {
     "id": "get-set-learn",
     "title": "Prismix partners with Get Set Learn to bring AI education to schools.",
     "excerpt": "A landmark collaboration to create AI-powered edutainment content for school children across India — curriculum-aligned, culturally resonant, and built to inspire.",
