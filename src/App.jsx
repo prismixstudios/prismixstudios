@@ -6,6 +6,7 @@ import About from "./pages/About";
 import WhatWeDo from "./pages/WhatWeDo";
 import Blogs from "./pages/Blogs";
 import Contact from "./pages/Contact";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/whatwedo" element={<WhatWeDo />} />
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         </Routes>
       </main>
       <Footer />
