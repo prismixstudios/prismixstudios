@@ -26,6 +26,29 @@
   status = 200
   force  = true
 
+# ── Latest News API ──────────────────────────────────────────────────
+# Public read endpoint (no auth) — returns published items sorted by order.
+[[redirects]]
+  from   = "/api/latest-news"
+  to     = "/.netlify/functions/latest-news"
+  status = 200
+  force  = true
+
+# Admin CRUD endpoint (Bearer token via NEWS_ADMIN_TOKEN).
+# More specific routes MUST come before less specific ones, so reorder /:id
+# branches are matched before the bare collection URL.
+[[redirects]]
+  from   = "/api/admin/latest-news/*"
+  to     = "/.netlify/functions/admin-latest-news/:splat"
+  status = 200
+  force  = true
+
+[[redirects]]
+  from   = "/api/admin/latest-news"
+  to     = "/.netlify/functions/admin-latest-news"
+  status = 200
+  force  = true
+
 [[redirects]]
   from   = "/*"
   to     = "/index.html"
