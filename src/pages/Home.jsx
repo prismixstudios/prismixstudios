@@ -165,61 +165,44 @@ const Home = () => {
         </div>
       </div>
 
-      <section className="py-16 px-10 bg-black text-white">
+      <section className="py-16 bg-black text-white overflow-hidden">
         <h2 className="text-white text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl tracking-wider font-semi-bold text-center mb-10">
           Our Clients
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:mx-40 md:mx-40 lg:mx-40 gap-10 md:gap-20 lg:gap-30 xl:gap-30 justify-items-center">
-          <img
-            src="/sodexo.png"
-            alt="Client 1"
-            className="h-20 w-40 object-contain"
-          />
-          <img
-            src="/being-human.png"
-            alt="Client 2"
-            className="h-20 w-40 object-contain"
-          />
-          <img
-            src="/flf.png"
-            alt="Client 3"
-            className="h-20 w-40 object-contain"
-          />
-          <img
-            src="/tata.png"
-            alt="Client 4"
-            className="h-20 w-40 object-contain"
-          />
-          <img
-            src="/gsl.png"
-            alt="Client 5"
-            className="h-20 w-40 object-contain"
-          />
-          <img
-            src="/spotlight.png"
-            alt="Client 6"
-            className="h-20 w-40 object-contain"
-          />
-          <img
-            src="/3Pine.png"
-            alt="Client 7"
-            className="h-20 w-40 object-contain"
-          />
-          <img
-            src="/starcruise2.png"
-            alt="Client 8"
-            className="h-20 w-40 object-contain"
-          />
-          <img
-            src="/indivar.jpg"
-            alt="Client 9"
-            className="h-20 w-40 object-contain"
-          />
-          <img
-            src="/LuvFilms.jpg"
-            alt="Client 10"
-            className="h-20 w-40 object-contain"
-          />
+        <div className="overflow-hidden w-full">
+          <div className="clients-marquee-track">
+            {[
+              { src: "/sodexo.png",      alt: "Sodexo" },
+              { src: "/being-human.png", alt: "Being Human" },
+              { src: "/flf.png",         alt: "FLF" },
+              { src: "/tata.png",        alt: "Tata" },
+              { src: "/gsl.png",         alt: "GSL" },
+              { src: "/spotlight.png",   alt: "Spotlight" },
+              { src: "/3Pine.png",       alt: "3Pine" },
+              { src: "/starcruise2.png", alt: "Star Cruise" },
+              { src: "/indivar.jpg",     alt: "Indivar" },
+              { src: "/LuvFilms.jpg",    alt: "Luv Films" },
+            ].concat([
+              { src: "/sodexo.png",      alt: "Sodexo" },
+              { src: "/being-human.png", alt: "Being Human" },
+              { src: "/flf.png",         alt: "FLF" },
+              { src: "/tata.png",        alt: "Tata" },
+              { src: "/gsl.png",         alt: "GSL" },
+              { src: "/spotlight.png",   alt: "Spotlight" },
+              { src: "/3Pine.png",       alt: "3Pine" },
+              { src: "/starcruise2.png", alt: "Star Cruise" },
+              { src: "/indivar.jpg",     alt: "Indivar" },
+              { src: "/LuvFilms.jpg",    alt: "Luv Films" },
+            ]).map((client, i) => (
+              <div key={i} className="flex-shrink-0 flex items-center justify-center px-10">
+                <img
+                  src={client.src}
+                  alt={client.alt}
+                  className="h-20 w-40 object-contain"
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </section>
     </div>
