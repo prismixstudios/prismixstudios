@@ -1,5 +1,15 @@
 [
   {
+    "id": "ajay-devgn-funded-ai-short-film-wins-top-award-at-international-short-film-festi",
+    "title": "Ajay Devgn funded AI short film wins top award at International Short Film Festival Goa",
+    "image": "https://raw.githubusercontent.com/prismixstudios/prismixstudios/main/public/news/news-ajay-devgn-funded-ai-short-film-wins-top-award-at-internatio.png",
+    "link": "https://theprint.in/feature/ajay-devgn-ai-short-film-international-short-film-festival-goa/2929235/?amp",
+    "published": true,
+    "order": 1,
+    "createdAt": "2026-05-29T10:43:35.706Z",
+    "updatedAt": "2026-05-29T10:43:40.881Z"
+  },
+  {
     "id": "ajay-devgn-prismix-get-set-learn",
     "title": "Ajay Devgn's Prismix Studios partners with Get Set Learn to create AI content for students",
     "image": "/news2_1.png",
@@ -8,15 +18,5 @@
     "order": 2,
     "createdAt": "2025-06-01T00:00:00.000Z",
     "updatedAt": "2026-05-29T07:22:01.654Z"
-  },
-  {
-    "id": "ajay-devgn-funded-ai-short-film-wins-top-award-at-international-short-film-festi",
-    "title": "Ajay Devgn funded AI short film wins top award at International Short Film Festival Goa",
-    "image": "https://raw.githubusercontent.com/prismixstudios/prismixstudios/main/public/news/news-ajay-devgn-funded-ai-short-film-wins-top-award-at-internatio.png",
-    "link": "https://theprint.in/feature/ajay-devgn-ai-short-film-international-short-film-festival-goa/2929235/?amp",
-    "published": true,
-    "order": 3,
-    "createdAt": "2026-05-29T10:43:35.706Z",
-    "updatedAt": "2026-05-29T10:43:35.706Z"
   }
 ]
