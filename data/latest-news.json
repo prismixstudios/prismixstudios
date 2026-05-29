@@ -1,0 +1,32 @@
+[
+  {
+    "id": "videogenx-ai-film-making-bootcamp",
+    "title": "VideoGenX - AI Film Making Bootcamp",
+    "image": "/news1.png",
+    "link": "https://prismixstudios.com",
+    "published": true,
+    "order": 1,
+    "createdAt": "2025-06-01T00:00:00.000Z",
+    "updatedAt": "2025-06-01T00:00:00.000Z"
+  },
+  {
+    "id": "ajay-devgn-prismix-get-set-learn",
+    "title": "Ajay Devgn's Prismix Studios partners with Get Set Learn to create AI content for students",
+    "image": "/news2_1.png",
+    "link": "https://yourstory.com/ai-story/exclusive-ajay-devgn-prismix-studios-partners-get-set-learn-ai-education-content-schools",
+    "published": true,
+    "order": 2,
+    "createdAt": "2025-06-01T00:00:00.000Z",
+    "updatedAt": "2025-06-01T00:00:00.000Z"
+  },
+  {
+    "id": "ajay-devgn-launches-generative-ai-prismix",
+    "title": "Ajay Devgn Launches Generative AI Storytelling Venture Prismix (EXCLUSIVE)",
+    "image": "/news3.png",
+    "link": "https://variety.com/2025/film/news/ajay-devgn-generative-ai-prismix-1236330979/",
+    "published": true,
+    "order": 3,
+    "createdAt": "2025-06-01T00:00:00.000Z",
+    "updatedAt": "2025-06-01T00:00:00.000Z"
+  }
+]

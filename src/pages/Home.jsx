@@ -1,7 +1,33 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { getLatestNews } from "../services/newsService";
+import { news as STATIC_NEWS } from "../data/news";
 
 const Home = () => {
+  // Latest News section. Initial value comes from the static seed so the
+  // section renders something on first paint; getLatestNews() then swaps in
+  // the live items once GitHub raw JSON has loaded (≤ ~100 ms typically).
+  // Only the first three items are displayed — older items stay in the JSON
+  // but are not shown on the homepage.
+  const [newsItems, setNewsItems] = useState(STATIC_NEWS);
+
+  useEffect(() => {
+    let alive = true;
+    getLatestNews()
+      .then((items) => {
+        if (alive && Array.isArray(items) && items.length > 0) {
+          setNewsItems(items);
+        }
+      })
+      .catch(() => {
+        // Already covered by the service-level fallback; nothing to do here.
+      });
+    return () => {
+      alive = false;
+    };
+  }, []);
+
   return (
     <div className="relative w-full h-auto">
       {/* Full-Screen Video Section */}
@@ -107,63 +133,33 @@ const Home = () => {
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 justify-center items-start">
-              {/* News Card 1 */}
-              <a
-                href="https://prismixstudios.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-black/50 backdrop-blur-lg shadow-lg rounded-lg overflow-hidden p-4 block flex flex-col h-full"
-              >
-                <div className="w-full h-48 overflow-hidden rounded-md">
-                  <img
-                    src="/news1.png"
-                    alt="News 1"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <h3 className="text-xl text-white font-[arial] md:text-2xl mt-4 text-center">
-                  VideoGenX - AI Film Making Bootcamp
-                </h3>
-              </a>
-
-              {/* News Card 2 */}
-              <a
-                href="https://yourstory.com/ai-story/exclusive-ajay-devgn-prismix-studios-partners-get-set-learn-ai-education-content-schools"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-black/50 backdrop-blur-lg shadow-lg rounded-lg overflow-hidden p-4 block flex flex-col h-full"
-              >
-                <div className="w-full h-48 overflow-hidden rounded-md">
-                  <img
-                    src="/news2_1.png"
-                    alt="News 2"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <h3 className="text-xl text-white font-[arial] md:text-2xl mt-4 text-center">
-                  Ajay Devgn’s Prismix Studios partners with Get Set Learn to create AI content for students
-                </h3>
-              </a>
-
-              {/* News Card 3 */}
-              <a
-                href="https://variety.com/2025/film/news/ajay-devgn-generative-ai-prismix-1236330979/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-black/50 backdrop-blur-lg shadow-lg rounded-lg overflow-hidden p-4 block flex flex-col h-full"
-              >
-                <div className="w-full h-48 overflow-hidden rounded-md">
-                  <img
-                    src="/news3.png"
-                    alt="News 3"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <h3 className="text-xl text-white font-[arial] md:text-2xl mt-4 text-center">
-                  Ajay Devgn Launches Generative AI Storytelling Venture Prismix
-                  (EXCLUSIVE)
-                </h3>
-              </a>
+              {/*
+                Latest News cards — dynamic.
+                Source: data/latest-news.json on GitHub, fetched via newsService.
+                Falls back to the seeded src/data/news.js if the fetch fails.
+                Only the first three items are shown on the homepage; the rest
+                stay in the dataset for archival / future tweaks.
+              */}
+              {newsItems.slice(0, 3).map((item, i) => (
+                <a
+                  key={item.id ?? i}
+                  href={item.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-black/50 backdrop-blur-lg shadow-lg rounded-lg overflow-hidden p-4 block flex flex-col h-full"
+                >
+                  <div className="w-full h-48 overflow-hidden rounded-md">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <h3 className="text-xl text-white font-[arial] md:text-2xl mt-4 text-center">
+                    {item.title}
+                  </h3>
+                </a>
+              ))}
             </div>
           </div>
         </div>
