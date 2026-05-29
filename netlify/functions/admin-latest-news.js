@@ -141,9 +141,8 @@ async function handleCreate(req) {
     var id          = uniquify(baseId, existingIds);
     var now         = new Date().toISOString();
 
-    // New items append to the end. We compute the next order so the admin's
-    // first sight of the list places the new card last; they can then move
-    // it up if they want it featured.
+    // Assign a provisional order higher than all existing items so the new
+    // card sorts last, then renumber everything 1..N to close any prior gaps.
     var maxOrder = 0;
     for (var i = 0; i < items.length; i++) {
       if (typeof items[i].order === "number" && items[i].order > maxOrder) {
@@ -163,7 +162,9 @@ async function handleCreate(req) {
     };
 
     items.push(item);
-    return { items: items, payload: item };
+    var renumbered = renumberItems(items, now);
+    var created = renumbered.find(function (n) { return n.id === id; });
+    return { items: renumbered, payload: created };
   });
 }
 
@@ -194,8 +195,8 @@ async function handleUpdate(req, id) {
   });
 }
 
-/** DELETE /api/admin/latest-news/:id — remove one item; order numbers
- *  of the survivors are *not* renumbered (gaps are harmless). */
+/** DELETE /api/admin/latest-news/:id — remove one item and renumber survivors
+ *  1..N so order values always form a gapless sequence. */
 async function handleDelete(id) {
   return await mutateWithRetry(function (items) {
     var before = items.length;
@@ -203,7 +204,8 @@ async function handleDelete(id) {
     if (next.length === before) {
       return { error: jsonError(404, 'No news item with id "' + id + '"') };
     }
-    return { items: next, payload: { deleted: id } };
+    var renumbered = renumberItems(next, new Date().toISOString());
+    return { items: renumbered, payload: { deleted: id } };
   });
 }
 
@@ -334,6 +336,18 @@ function sortByOrder(items) {
     var ao = typeof a.order === "number" ? a.order : Number.MAX_SAFE_INTEGER;
     var bo = typeof b.order === "number" ? b.order : Number.MAX_SAFE_INTEGER;
     return ao - bo;
+  });
+}
+
+/** Sort items by current order and assign fresh 1-based integers so the
+ *  sequence is always gapless. Items whose order is already correct are
+ *  returned as-is (no updatedAt bump). */
+function renumberItems(items, now) {
+  var sorted = sortByOrder(items);
+  return sorted.map(function (it, i) {
+    var newOrder = i + 1;
+    if (it.order === newOrder) return it;
+    return { ...it, order: newOrder, updatedAt: now };
   });
 }
 

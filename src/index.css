@@ -735,6 +735,22 @@ body {
   color: #6aa0ff; text-decoration: underline; word-break: break-all;
 }
 
+/* — Clients marquee — */
+@keyframes marquee-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.clients-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 35s linear infinite;
+}
+
+.clients-marquee-track:hover {
+  animation-play-state: paused;
+}
+
 /* Archive grid responsive */
 @media (max-width: 1080px) {
   .bp-archive-grid { grid-template-columns: repeat(2, 1fr) !important; }
