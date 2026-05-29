@@ -1,15 +1,5 @@
 [
   {
-    "id": "videogenx-ai-film-making-bootcamp",
-    "title": "VideoGenX - AI Film Making Bootcamp",
-    "image": "/news1.png",
-    "link": "https://prismixstudios.com",
-    "published": true,
-    "order": 1,
-    "createdAt": "2025-06-01T00:00:00.000Z",
-    "updatedAt": "2026-05-29T07:22:01.654Z"
-  },
-  {
     "id": "ajay-devgn-prismix-get-set-learn",
     "title": "Ajay Devgn's Prismix Studios partners with Get Set Learn to create AI content for students",
     "image": "/news2_1.png",
