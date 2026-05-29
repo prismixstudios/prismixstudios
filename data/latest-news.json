@@ -1,32 +1,32 @@
 [
   {
-    "id": "videogenx-ai-film-making-bootcamp",
-    "title": "VideoGenX - AI Film Making Bootcamp",
-    "image": "/news1.png",
-    "link": "https://prismixstudios.com",
-    "published": true,
-    "order": 1,
-    "createdAt": "2025-06-01T00:00:00.000Z",
-    "updatedAt": "2025-06-01T00:00:00.000Z"
-  },
-  {
     "id": "ajay-devgn-prismix-get-set-learn",
     "title": "Ajay Devgn's Prismix Studios partners with Get Set Learn to create AI content for students",
     "image": "/news2_1.png",
     "link": "https://yourstory.com/ai-story/exclusive-ajay-devgn-prismix-studios-partners-get-set-learn-ai-education-content-schools",
     "published": true,
-    "order": 2,
+    "order": 1,
     "createdAt": "2025-06-01T00:00:00.000Z",
-    "updatedAt": "2025-06-01T00:00:00.000Z"
+    "updatedAt": "2026-05-29T10:43:49.019Z"
   },
   {
-    "id": "ajay-devgn-launches-generative-ai-prismix",
-    "title": "Ajay Devgn Launches Generative AI Storytelling Venture Prismix (EXCLUSIVE)",
-    "image": "/news3.png",
-    "link": "https://variety.com/2025/film/news/ajay-devgn-generative-ai-prismix-1236330979/",
+    "id": "ajay-devgn-funded-ai-short-film-wins-top-award-at-international-short-film-festi",
+    "title": "Ajay Devgn funded AI short film wins top award at International Short Film Festival Goa",
+    "image": "https://raw.githubusercontent.com/prismixstudios/prismixstudios/main/public/news/news-ajay-devgn-funded-ai-short-film-wins-top-award-at-internatio.png",
+    "link": "https://theprint.in/feature/ajay-devgn-ai-short-film-international-short-film-festival-goa/2929235/?amp",
+    "published": true,
+    "order": 2,
+    "createdAt": "2026-05-29T10:43:35.706Z",
+    "updatedAt": "2026-05-29T10:43:49.019Z"
+  },
+  {
+    "id": "vatsal-sheth-opens-up-about-the-overwhelming-response-for-happy-birthday-joshi-s",
+    "title": "Vatsal Sheth opens up about the overwhelming response for Happy Birthday Joshi, says 'It has been incredibly moving'",
+    "image": "https://raw.githubusercontent.com/prismixstudios/prismixstudios/main/public/news/news-vatsal-sheth-opens-up-about-the-overwhelming-response-for-ha.png",
+    "link": "https://www.mid-day.com/entertainment/web-series/article/people-felt-every-emotion-vatsal-sheth-on-happy-birthday-joshi-response-23627339",
     "published": true,
     "order": 3,
-    "createdAt": "2025-06-01T00:00:00.000Z",
-    "updatedAt": "2025-06-01T00:00:00.000Z"
+    "createdAt": "2026-05-29T10:45:21.262Z",
+    "updatedAt": "2026-05-29T10:45:21.262Z"
   }
 ]
